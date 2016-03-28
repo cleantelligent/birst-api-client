@@ -1,0 +1,21 @@
+#------------------------------------------------------------
+#
+# List of files/folders that should be ignored by git.
+#
+#------------------------------------------------------------
+
+# Eclipse files
+.project
+.classpath
+.settings
+
+# IntelliJ files
+*.iml
+.idea
+
+# ctags
+tags
+
+# general
+target
+**/target
