@@ -13,8 +13,8 @@
         <birst.command.webservices.version>5.21</birst.command.webservices.version>
     </properties>
 
-    <groupId>birst.webservices.client</groupId>
-    <artifactId>birst-command-webservices-client</artifactId>
+    <groupId>com.birst</groupId>
+    <artifactId>birst-api-client</artifactId>
     <version>${birst.command.webservices.version}</version>
 
     <dependencies>
