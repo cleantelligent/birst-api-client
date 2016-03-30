@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>birst.webservices.client</groupId>
-    <artifactId>birst-command-webservices-client</artifactId>
-    <version>5.21-SNAPSHOT</version>
+    <groupId>com.birst</groupId>
+    <artifactId>birst-api-client</artifactId>
+    <version>5.21</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
