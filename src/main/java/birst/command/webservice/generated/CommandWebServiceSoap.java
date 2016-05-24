@@ -27,6 +27,60 @@ public interface CommandWebServiceSoap {
 
 
     /**
+     * Sets the space name. Argments are the Login token, the space Id, and the spaceName. The spaceName must be less than 256 characters and required.
+     * 
+     * @param spaceName
+     * @param spaceID
+     * @param token
+     */
+    @WebMethod(action = "http://www.birst.com/setSpaceName")
+    @RequestWrapper(localName = "setSpaceName", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.SetSpaceName")
+    @ResponseWrapper(localName = "setSpaceNameResponse", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.SetSpaceNameResponse")
+    public void setSpaceName(
+        @WebParam(name = "token", targetNamespace = "http://www.birst.com/")
+        String token,
+        @WebParam(name = "spaceID", targetNamespace = "http://www.birst.com/")
+        String spaceID,
+        @WebParam(name = "spaceName", targetNamespace = "http://www.birst.com/")
+        String spaceName);
+
+    /**
+     * Sets the space comments.  Argments are the Login token, the space Id, and the spaceComments. The spaceName must be less than 2048 characters.
+     * 
+     * @param spaceID
+     * @param spaceComments
+     * @param token
+     */
+    @WebMethod(action = "http://www.birst.com/setSpaceComments")
+    @RequestWrapper(localName = "setSpaceComments", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.SetSpaceComments")
+    @ResponseWrapper(localName = "setSpaceCommentsResponse", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.SetSpaceCommentsResponse")
+    public void setSpaceComments(
+        @WebParam(name = "token", targetNamespace = "http://www.birst.com/")
+        String token,
+        @WebParam(name = "spaceID", targetNamespace = "http://www.birst.com/")
+        String spaceID,
+        @WebParam(name = "spaceComments", targetNamespace = "http://www.birst.com/")
+        String spaceComments);
+
+    /**
+     * Sets the Email.  Argments are the Login token, the space Id, and the email. The email must be in valid format.
+     * 
+     * @param spaceID
+     * @param email
+     * @param token
+     */
+    @WebMethod(action = "http://www.birst.com/setEmailFromForSpace")
+    @RequestWrapper(localName = "setEmailFromForSpace", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.SetEmailFromForSpace")
+    @ResponseWrapper(localName = "setEmailFromForSpaceResponse", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.SetEmailFromForSpaceResponse")
+    public void setEmailFromForSpace(
+        @WebParam(name = "token", targetNamespace = "http://www.birst.com/")
+        String token,
+        @WebParam(name = "spaceID", targetNamespace = "http://www.birst.com/")
+        String spaceID,
+        @WebParam(name = "email", targetNamespace = "http://www.birst.com/")
+        String email);
+
+    /**
      * Sets the email subject.  Argments are the Login token, the space Id, and the subject.
      * 
      * @param spaceID
@@ -812,6 +866,21 @@ public interface CommandWebServiceSoap {
         String sfdcOrgID);
 
     /**
+     * Get mapping of SFDC account to Birst account
+     * 
+     * @param token
+     * @return
+     *     returns birst.command.webservice.generated.ArrayOfString
+     */
+    @WebMethod(action = "http://www.birst.com/getSfdcAccountMapping")
+    @WebResult(name = "getSfdcAccountMappingResult", targetNamespace = "http://www.birst.com/")
+    @RequestWrapper(localName = "getSfdcAccountMapping", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.GetSfdcAccountMapping")
+    @ResponseWrapper(localName = "getSfdcAccountMappingResponse", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.GetSfdcAccountMappingResponse")
+    public ArrayOfString getSfdcAccountMapping(
+        @WebParam(name = "token", targetNamespace = "http://www.birst.com/")
+        String token);
+
+    /**
      * Log out of this web service.  Pass the Login token as the argument
      * 
      * @param token
@@ -894,6 +963,30 @@ public interface CommandWebServiceSoap {
         String sp1ID,
         @WebParam(name = "sp2ID", targetNamespace = "http://www.birst.com/")
         String sp2ID);
+
+    /**
+     * Swaps 2 spaces and align the created packages (swap the created space IDs in the packages).  The arguments are the Login token, and the names of the 2 spaces. Returns a job token
+     * 
+     * @param sp2Name
+     * @param syncImportedPackages
+     * @param sp1Name
+     * @param token
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(action = "http://www.birst.com/swapSpaceForPackages")
+    @WebResult(name = "swapSpaceForPackagesResult", targetNamespace = "http://www.birst.com/")
+    @RequestWrapper(localName = "swapSpaceForPackages", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.SwapSpaceForPackages")
+    @ResponseWrapper(localName = "swapSpaceForPackagesResponse", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.SwapSpaceForPackagesResponse")
+    public String swapSpaceForPackages(
+        @WebParam(name = "token", targetNamespace = "http://www.birst.com/")
+        String token,
+        @WebParam(name = "sp1Name", targetNamespace = "http://www.birst.com/")
+        String sp1Name,
+        @WebParam(name = "sp2Name", targetNamespace = "http://www.birst.com/")
+        String sp2Name,
+        @WebParam(name = "syncImportedPackages", targetNamespace = "http://www.birst.com/")
+        boolean syncImportedPackages);
 
     /**
      * Copy the contents from one space into another.  The arguments are the Login token, the space Id to copy from and the space Id to copy to. It returns a job token
@@ -1679,6 +1772,24 @@ public interface CommandWebServiceSoap {
         int productId);
 
     /**
+     * Remove a product from the user. Arguments are the Login token, the name of the user and product id.
+     * 
+     * @param productId
+     * @param userName
+     * @param token
+     */
+    @WebMethod(action = "http://www.birst.com/removeProductFromUser")
+    @RequestWrapper(localName = "removeProductFromUser", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.RemoveProductFromUser")
+    @ResponseWrapper(localName = "removeProductFromUserResponse", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.RemoveProductFromUserResponse")
+    public void removeProductFromUser(
+        @WebParam(name = "token", targetNamespace = "http://www.birst.com/")
+        String token,
+        @WebParam(name = "userName", targetNamespace = "http://www.birst.com/")
+        String userName,
+        @WebParam(name = "productId", targetNamespace = "http://www.birst.com/")
+        int productId);
+
+    /**
      * Execute a Birst Logical Query.  Arguments are the Login token, the Birst logical query, and the space Id. Returns the first 1000 results.  See queryMore for retrieving the remainder.
      * 
      * @param spaceID
@@ -2451,6 +2562,27 @@ public interface CommandWebServiceSoap {
     @RequestWrapper(localName = "getSubjectAreaContent", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.GetSubjectAreaContent")
     @ResponseWrapper(localName = "getSubjectAreaContentResponse", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.GetSubjectAreaContentResponse")
     public String getSubjectAreaContent(
+        @WebParam(name = "token", targetNamespace = "http://www.birst.com/")
+        String token,
+        @WebParam(name = "spaceID", targetNamespace = "http://www.birst.com/")
+        String spaceID,
+        @WebParam(name = "name", targetNamespace = "http://www.birst.com/")
+        String name);
+
+    /**
+     * Gets the extended subject area in a space.  Arguments are the login token, space id, and subject area name.
+     * 
+     * @param spaceID
+     * @param name
+     * @param token
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(action = "http://www.birst.com/getExtendedSubjectArea")
+    @WebResult(name = "getExtendedSubjectAreaResult", targetNamespace = "http://www.birst.com/")
+    @RequestWrapper(localName = "getExtendedSubjectArea", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.GetExtendedSubjectArea")
+    @ResponseWrapper(localName = "getExtendedSubjectAreaResponse", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.GetExtendedSubjectAreaResponse")
+    public String getExtendedSubjectArea(
         @WebParam(name = "token", targetNamespace = "http://www.birst.com/")
         String token,
         @WebParam(name = "spaceID", targetNamespace = "http://www.birst.com/")
@@ -3369,59 +3501,5 @@ public interface CommandWebServiceSoap {
         String username,
         @WebParam(name = "localeId", targetNamespace = "http://www.birst.com/")
         String localeId);
-
-    /**
-     * Sets the space name. Argments are the Login token, the space Id, and the spaceName. The spaceName must be less than 256 characters and required.
-     * 
-     * @param spaceName
-     * @param spaceID
-     * @param token
-     */
-    @WebMethod(action = "http://www.birst.com/setSpaceName")
-    @RequestWrapper(localName = "setSpaceName", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.SetSpaceName")
-    @ResponseWrapper(localName = "setSpaceNameResponse", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.SetSpaceNameResponse")
-    public void setSpaceName(
-        @WebParam(name = "token", targetNamespace = "http://www.birst.com/")
-        String token,
-        @WebParam(name = "spaceID", targetNamespace = "http://www.birst.com/")
-        String spaceID,
-        @WebParam(name = "spaceName", targetNamespace = "http://www.birst.com/")
-        String spaceName);
-
-    /**
-     * Sets the space comments.  Argments are the Login token, the space Id, and the spaceComments. The spaceName must be less than 2048 characters.
-     * 
-     * @param spaceID
-     * @param spaceComments
-     * @param token
-     */
-    @WebMethod(action = "http://www.birst.com/setSpaceComments")
-    @RequestWrapper(localName = "setSpaceComments", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.SetSpaceComments")
-    @ResponseWrapper(localName = "setSpaceCommentsResponse", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.SetSpaceCommentsResponse")
-    public void setSpaceComments(
-        @WebParam(name = "token", targetNamespace = "http://www.birst.com/")
-        String token,
-        @WebParam(name = "spaceID", targetNamespace = "http://www.birst.com/")
-        String spaceID,
-        @WebParam(name = "spaceComments", targetNamespace = "http://www.birst.com/")
-        String spaceComments);
-
-    /**
-     * Sets the Email.  Argments are the Login token, the space Id, and the email. The email must be in valid format.
-     * 
-     * @param spaceID
-     * @param email
-     * @param token
-     */
-    @WebMethod(action = "http://www.birst.com/setEmailFromForSpace")
-    @RequestWrapper(localName = "setEmailFromForSpace", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.SetEmailFromForSpace")
-    @ResponseWrapper(localName = "setEmailFromForSpaceResponse", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.SetEmailFromForSpaceResponse")
-    public void setEmailFromForSpace(
-        @WebParam(name = "token", targetNamespace = "http://www.birst.com/")
-        String token,
-        @WebParam(name = "spaceID", targetNamespace = "http://www.birst.com/")
-        String spaceID,
-        @WebParam(name = "email", targetNamespace = "http://www.birst.com/")
-        String email);
 
 }

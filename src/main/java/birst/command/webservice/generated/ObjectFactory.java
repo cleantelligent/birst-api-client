@@ -142,6 +142,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetExtendedSubjectArea }
+     * 
+     */
+    public GetExtendedSubjectArea createGetExtendedSubjectArea() {
+        return new GetExtendedSubjectArea();
+    }
+
+    /**
      * Create an instance of {@link ModifyRealTimeConnectionInformation }
      * 
      */
@@ -438,6 +446,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link RemoveProductFromUser }
+     * 
+     */
+    public RemoveProductFromUser createRemoveProductFromUser() {
+        return new RemoveProductFromUser();
+    }
+
+    /**
      * Create an instance of {@link FinishDataUploadResponse }
      * 
      */
@@ -643,6 +659,14 @@ public class ObjectFactory {
      */
     public GetUserProfileResponse createGetUserProfileResponse() {
         return new GetUserProfileResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetSfdcAccountMappingResponse }
+     * 
+     */
+    public GetSfdcAccountMappingResponse createGetSfdcAccountMappingResponse() {
+        return new GetSfdcAccountMappingResponse();
     }
 
     /**
@@ -1630,6 +1654,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetSfdcAccountMapping }
+     * 
+     */
+    public GetSfdcAccountMapping createGetSfdcAccountMapping() {
+        return new GetSfdcAccountMapping();
+    }
+
+    /**
      * Create an instance of {@link CreateProfileResponse }
      * 
      */
@@ -1918,6 +1950,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link RemoveProductFromUserResponse }
+     * 
+     */
+    public RemoveProductFromUserResponse createRemoveProductFromUserResponse() {
+        return new RemoveProductFromUserResponse();
+    }
+
+    /**
      * Create an instance of {@link UploadDataResponse }
      * 
      */
@@ -2067,6 +2107,14 @@ public class ObjectFactory {
      */
     public GetUserProfile createGetUserProfile() {
         return new GetUserProfile();
+    }
+
+    /**
+     * Create an instance of {@link SwapSpaceForPackagesResponse }
+     * 
+     */
+    public SwapSpaceForPackagesResponse createSwapSpaceForPackagesResponse() {
+        return new SwapSpaceForPackagesResponse();
     }
 
     /**
@@ -2270,6 +2318,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link SetSpaceCommentsResponse }
+     * 
+     */
+    public SetSpaceCommentsResponse createSetSpaceCommentsResponse() {
+        return new SetSpaceCommentsResponse();
+    }
+
+    /**
      * Create an instance of {@link SetForegroundColorForSpace }
      * 
      */
@@ -2294,19 +2350,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SetSpaceCommentsResponse }
-     * 
-     */
-    public SetSpaceCommentsResponse createSetSpaceCommentsResponse() {
-        return new SetSpaceCommentsResponse();
-    }
-
-    /**
      * Create an instance of {@link AddUser }
      * 
      */
     public AddUser createAddUser() {
         return new AddUser();
+    }
+
+    /**
+     * Create an instance of {@link GetExtendedSubjectAreaResponse }
+     * 
+     */
+    public GetExtendedSubjectAreaResponse createGetExtendedSubjectAreaResponse() {
+        return new GetExtendedSubjectAreaResponse();
     }
 
     /**
@@ -2475,6 +2531,14 @@ public class ObjectFactory {
      */
     public SetProfilePropertyResponse createSetProfilePropertyResponse() {
         return new SetProfilePropertyResponse();
+    }
+
+    /**
+     * Create an instance of {@link SwapSpaceForPackages }
+     * 
+     */
+    public SwapSpaceForPackages createSwapSpaceForPackages() {
+        return new SwapSpaceForPackages();
     }
 
     /**
@@ -2838,19 +2902,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ClearDashboardCacheResponse }
-     * 
-     */
-    public ClearDashboardCacheResponse createClearDashboardCacheResponse() {
-        return new ClearDashboardCacheResponse();
-    }
-
-    /**
      * Create an instance of {@link SetEmailFromForSpaceResponse }
      * 
      */
     public SetEmailFromForSpaceResponse createSetEmailFromForSpaceResponse() {
         return new SetEmailFromForSpaceResponse();
+    }
+
+    /**
+     * Create an instance of {@link ClearDashboardCacheResponse }
+     * 
+     */
+    public ClearDashboardCacheResponse createClearDashboardCacheResponse() {
+        return new ClearDashboardCacheResponse();
     }
 
     /**
@@ -2878,6 +2942,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link SetSpaceNameResponse }
+     * 
+     */
+    public SetSpaceNameResponse createSetSpaceNameResponse() {
+        return new SetSpaceNameResponse();
+    }
+
+    /**
      * Create an instance of {@link RebuildIndices }
      * 
      */
@@ -2891,14 +2963,6 @@ public class ObjectFactory {
      */
     public GetDirectoryContents createGetDirectoryContents() {
         return new GetDirectoryContents();
-    }
-
-    /**
-     * Create an instance of {@link SetSpaceNameResponse }
-     * 
-     */
-    public SetSpaceNameResponse createSetSpaceNameResponse() {
-        return new SetSpaceNameResponse();
     }
 
     /**

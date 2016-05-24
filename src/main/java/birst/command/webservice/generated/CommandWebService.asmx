@@ -3,6 +3,42 @@
   <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">A webservice which performs provisioning and execution for Birst</wsdl:documentation>
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://www.birst.com/">
+      <s:element name="setSpaceName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="spaceID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="spaceName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setSpaceNameResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="setSpaceComments">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="spaceID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="spaceComments" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setSpaceCommentsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="setEmailFromForSpace">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="spaceID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setEmailFromForSpaceResponse">
+        <s:complexType />
+      </s:element>
       <s:element name="setEmailSubjectForSpace">
         <s:complexType>
           <s:sequence>
@@ -753,6 +789,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="dateFormat" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="compressionFormat" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="ignoreHeaders" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="keepQuotes" type="s:boolean" />
         </s:sequence>
       </s:complexType>
       <s:element name="loadStagingtableFromS3BucketResponse">
@@ -783,6 +820,20 @@
       </s:element>
       <s:element name="removeSfdcAccountMappingResponse">
         <s:complexType />
+      </s:element>
+      <s:element name="getSfdcAccountMapping">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSfdcAccountMappingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getSfdcAccountMappingResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
       <s:element name="Logout">
         <s:complexType>
@@ -851,6 +902,23 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="swapSpaceContentsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="swapSpaceForPackages">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sp1Name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sp2Name" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="syncImportedPackages" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="swapSpaceForPackagesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="swapSpaceForPackagesResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1413,6 +1481,18 @@
         </s:complexType>
       </s:element>
       <s:element name="addProductToUserResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="removeProductFromUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="productId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="removeProductFromUserResponse">
         <s:complexType />
       </s:element>
       <s:element name="executeQueryInSpace">
@@ -2081,6 +2161,22 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="getExtendedSubjectArea">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="spaceID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getExtendedSubjectAreaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getExtendedSubjectAreaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="getUpdatedSubjectArea">
         <s:complexType>
           <s:sequence>
@@ -2734,44 +2830,26 @@
       <s:element name="setLanguageForUserResponse">
         <s:complexType />
       </s:element>
-      <s:element name="setSpaceName">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="spaceID" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="spaceName" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="setSpaceNameResponse">
-        <s:complexType />
-      </s:element>
-      <s:element name="setSpaceComments">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="spaceID" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="spaceComments" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="setSpaceCommentsResponse">
-        <s:complexType />
-      </s:element>
-      <s:element name="setEmailFromForSpace">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="spaceID" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="setEmailFromForSpaceResponse">
-        <s:complexType />
-      </s:element>
     </s:schema>
   </wsdl:types>
+  <wsdl:message name="setSpaceNameSoapIn">
+    <wsdl:part name="parameters" element="tns:setSpaceName" />
+  </wsdl:message>
+  <wsdl:message name="setSpaceNameSoapOut">
+    <wsdl:part name="parameters" element="tns:setSpaceNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="setSpaceCommentsSoapIn">
+    <wsdl:part name="parameters" element="tns:setSpaceComments" />
+  </wsdl:message>
+  <wsdl:message name="setSpaceCommentsSoapOut">
+    <wsdl:part name="parameters" element="tns:setSpaceCommentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="setEmailFromForSpaceSoapIn">
+    <wsdl:part name="parameters" element="tns:setEmailFromForSpace" />
+  </wsdl:message>
+  <wsdl:message name="setEmailFromForSpaceSoapOut">
+    <wsdl:part name="parameters" element="tns:setEmailFromForSpaceResponse" />
+  </wsdl:message>
   <wsdl:message name="setEmailSubjectForSpaceSoapIn">
     <wsdl:part name="parameters" element="tns:setEmailSubjectForSpace" />
   </wsdl:message>
@@ -3036,6 +3114,12 @@
   <wsdl:message name="removeSfdcAccountMappingSoapOut">
     <wsdl:part name="parameters" element="tns:removeSfdcAccountMappingResponse" />
   </wsdl:message>
+  <wsdl:message name="getSfdcAccountMappingSoapIn">
+    <wsdl:part name="parameters" element="tns:getSfdcAccountMapping" />
+  </wsdl:message>
+  <wsdl:message name="getSfdcAccountMappingSoapOut">
+    <wsdl:part name="parameters" element="tns:getSfdcAccountMappingResponse" />
+  </wsdl:message>
   <wsdl:message name="LogoutSoapIn">
     <wsdl:part name="parameters" element="tns:Logout" />
   </wsdl:message>
@@ -3065,6 +3149,12 @@
   </wsdl:message>
   <wsdl:message name="swapSpaceContentsSoapOut">
     <wsdl:part name="parameters" element="tns:swapSpaceContentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="swapSpaceForPackagesSoapIn">
+    <wsdl:part name="parameters" element="tns:swapSpaceForPackages" />
+  </wsdl:message>
+  <wsdl:message name="swapSpaceForPackagesSoapOut">
+    <wsdl:part name="parameters" element="tns:swapSpaceForPackagesResponse" />
   </wsdl:message>
   <wsdl:message name="copySpaceContentsSoapIn">
     <wsdl:part name="parameters" element="tns:copySpaceContents" />
@@ -3318,6 +3408,12 @@
   <wsdl:message name="addProductToUserSoapOut">
     <wsdl:part name="parameters" element="tns:addProductToUserResponse" />
   </wsdl:message>
+  <wsdl:message name="removeProductFromUserSoapIn">
+    <wsdl:part name="parameters" element="tns:removeProductFromUser" />
+  </wsdl:message>
+  <wsdl:message name="removeProductFromUserSoapOut">
+    <wsdl:part name="parameters" element="tns:removeProductFromUserResponse" />
+  </wsdl:message>
   <wsdl:message name="executeQueryInSpaceSoapIn">
     <wsdl:part name="parameters" element="tns:executeQueryInSpace" />
   </wsdl:message>
@@ -3545,6 +3641,12 @@
   </wsdl:message>
   <wsdl:message name="getSubjectAreaContentSoapOut">
     <wsdl:part name="parameters" element="tns:getSubjectAreaContentResponse" />
+  </wsdl:message>
+  <wsdl:message name="getExtendedSubjectAreaSoapIn">
+    <wsdl:part name="parameters" element="tns:getExtendedSubjectArea" />
+  </wsdl:message>
+  <wsdl:message name="getExtendedSubjectAreaSoapOut">
+    <wsdl:part name="parameters" element="tns:getExtendedSubjectAreaResponse" />
   </wsdl:message>
   <wsdl:message name="getUpdatedSubjectAreaSoapIn">
     <wsdl:part name="parameters" element="tns:getUpdatedSubjectArea" />
@@ -3786,25 +3888,22 @@
   <wsdl:message name="setLanguageForUserSoapOut">
     <wsdl:part name="parameters" element="tns:setLanguageForUserResponse" />
   </wsdl:message>
-  <wsdl:message name="setSpaceNameSoapIn">
-    <wsdl:part name="parameters" element="tns:setSpaceName" />
-  </wsdl:message>
-  <wsdl:message name="setSpaceNameSoapOut">
-    <wsdl:part name="parameters" element="tns:setSpaceNameResponse" />
-  </wsdl:message>
-  <wsdl:message name="setSpaceCommentsSoapIn">
-    <wsdl:part name="parameters" element="tns:setSpaceComments" />
-  </wsdl:message>
-  <wsdl:message name="setSpaceCommentsSoapOut">
-    <wsdl:part name="parameters" element="tns:setSpaceCommentsResponse" />
-  </wsdl:message>
-  <wsdl:message name="setEmailFromForSpaceSoapIn">
-    <wsdl:part name="parameters" element="tns:setEmailFromForSpace" />
-  </wsdl:message>
-  <wsdl:message name="setEmailFromForSpaceSoapOut">
-    <wsdl:part name="parameters" element="tns:setEmailFromForSpaceResponse" />
-  </wsdl:message>
   <wsdl:portType name="CommandWebServiceSoap">
+    <wsdl:operation name="setSpaceName">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sets the space name. Argments are the Login token, the space Id, and the spaceName. The spaceName must be less than 256 characters and required.</wsdl:documentation>
+      <wsdl:input message="tns:setSpaceNameSoapIn" />
+      <wsdl:output message="tns:setSpaceNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setSpaceComments">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sets the space comments.  Argments are the Login token, the space Id, and the spaceComments. The spaceName must be less than 2048 characters.</wsdl:documentation>
+      <wsdl:input message="tns:setSpaceCommentsSoapIn" />
+      <wsdl:output message="tns:setSpaceCommentsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setEmailFromForSpace">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sets the Email.  Argments are the Login token, the space Id, and the email. The email must be in valid format.</wsdl:documentation>
+      <wsdl:input message="tns:setEmailFromForSpaceSoapIn" />
+      <wsdl:output message="tns:setEmailFromForSpaceSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="setEmailSubjectForSpace">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sets the email subject.  Argments are the Login token, the space Id, and the subject.</wsdl:documentation>
       <wsdl:input message="tns:setEmailSubjectForSpaceSoapIn" />
@@ -4025,6 +4124,11 @@
       <wsdl:input message="tns:removeSfdcAccountMappingSoapIn" />
       <wsdl:output message="tns:removeSfdcAccountMappingSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="getSfdcAccountMapping">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get mapping of SFDC account to Birst account</wsdl:documentation>
+      <wsdl:input message="tns:getSfdcAccountMappingSoapIn" />
+      <wsdl:output message="tns:getSfdcAccountMappingSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="Logout">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Log out of this web service.  Pass the Login token as the argument</wsdl:documentation>
       <wsdl:input message="tns:LogoutSoapIn" />
@@ -4049,6 +4153,11 @@
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Swaps 2 spaces.  The arguments are the Login token, and the names of the 2 spaces. Returns a job token</wsdl:documentation>
       <wsdl:input message="tns:swapSpaceContentsSoapIn" />
       <wsdl:output message="tns:swapSpaceContentsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="swapSpaceForPackages">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Swaps 2 spaces and align the created packages (swap the created space IDs in the packages).  The arguments are the Login token, and the names of the 2 spaces. Returns a job token</wsdl:documentation>
+      <wsdl:input message="tns:swapSpaceForPackagesSoapIn" />
+      <wsdl:output message="tns:swapSpaceForPackagesSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="copySpaceContents">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Copy the contents from one space into another.  The arguments are the Login token, the space Id to copy from and the space Id to copy to. It returns a job token</wsdl:documentation>
@@ -4260,6 +4369,11 @@
       <wsdl:input message="tns:addProductToUserSoapIn" />
       <wsdl:output message="tns:addProductToUserSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="removeProductFromUser">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Remove a product from the user. Arguments are the Login token, the name of the user and product id.</wsdl:documentation>
+      <wsdl:input message="tns:removeProductFromUserSoapIn" />
+      <wsdl:output message="tns:removeProductFromUserSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="executeQueryInSpace">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Execute a Birst Logical Query.  Arguments are the Login token, the Birst logical query, and the space Id. Returns the first 1000 results.  See queryMore for retrieving the remainder.</wsdl:documentation>
       <wsdl:input message="tns:executeQueryInSpaceSoapIn" />
@@ -4449,6 +4563,11 @@
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">List all subject areas in a space.  Arguments are the login token, space id, and subject area name.</wsdl:documentation>
       <wsdl:input message="tns:getSubjectAreaContentSoapIn" />
       <wsdl:output message="tns:getSubjectAreaContentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getExtendedSubjectArea">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets the extended subject area in a space.  Arguments are the login token, space id, and subject area name.</wsdl:documentation>
+      <wsdl:input message="tns:getExtendedSubjectAreaSoapIn" />
+      <wsdl:output message="tns:getExtendedSubjectAreaSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="getUpdatedSubjectArea">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets the updated subject area based on the BQL query.  Arguments are the login token, space id, subject area name and BQL query.</wsdl:documentation>
@@ -4650,24 +4769,88 @@
       <wsdl:input message="tns:setLanguageForUserSoapIn" />
       <wsdl:output message="tns:setLanguageForUserSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="setSpaceName">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sets the space name. Argments are the Login token, the space Id, and the spaceName. The spaceName must be less than 256 characters and required.</wsdl:documentation>
-      <wsdl:input message="tns:setSpaceNameSoapIn" />
-      <wsdl:output message="tns:setSpaceNameSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="setSpaceComments">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sets the space comments.  Argments are the Login token, the space Id, and the spaceComments. The spaceName must be less than 2048 characters.</wsdl:documentation>
-      <wsdl:input message="tns:setSpaceCommentsSoapIn" />
-      <wsdl:output message="tns:setSpaceCommentsSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="setEmailFromForSpace">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Sets the Email.  Argments are the Login token, the space Id, and the email. The email must be in valid format.</wsdl:documentation>
-      <wsdl:input message="tns:setEmailFromForSpaceSoapIn" />
-      <wsdl:output message="tns:setEmailFromForSpaceSoapOut" />
-    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="CommandWebServiceSoap" type="tns:CommandWebServiceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="setSpaceName">
+      <soap:operation soapAction="http://www.birst.com/setSpaceName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <tns:validation>
+          <tns:assertions>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceName) &lt; 256</tns:expression>
+              <tns:description>Space names must be less than 256 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:setSpaceName/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceName) &gt; 0</tns:expression>
+              <tns:description>Space name is required</tns:description>
+            </tns:assert>
+          </tns:assertions>
+        </tns:validation>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setSpaceComments">
+      <soap:operation soapAction="http://www.birst.com/setSpaceComments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <tns:validation>
+          <tns:assertions>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceComments) &lt; 2048</tns:expression>
+              <tns:description>Space names must be less than 256 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:setSpaceComments/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+          </tns:assertions>
+        </tns:validation>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setEmailFromForSpace">
+      <soap:operation soapAction="http://www.birst.com/setEmailFromForSpace" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <tns:validation>
+          <tns:assertions>
+            <tns:assert>
+              <tns:expression>string-length(//b:email) &gt; 0</tns:expression>
+              <tns:description>Email is required</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:setEmailFromForSpace/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+          </tns:assertions>
+        </tns:validation>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="setEmailSubjectForSpace">
       <soap:operation soapAction="http://www.birst.com/setEmailSubjectForSpace" style="document" />
       <wsdl:input>
@@ -4675,12 +4858,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:setEmailSubjectForSpace/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -4721,12 +4904,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:setForegroundColorForSpace/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:fgcolor) = 6</tns:expression>
@@ -4788,12 +4971,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:getSourcesList/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:getSourcesList/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -4809,12 +4992,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:getSourceDetails/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:getSourceDetails/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -4830,12 +5013,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:setSourceDetails/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:setSourceDetails/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -4851,12 +5034,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:mapLiveAccessSource/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:mapLiveAccessSource/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -4981,12 +5164,12 @@
               <tns:description>Space names must be less than 256 characters</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:getSpaceComments/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:getSpaceComments/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -5069,20 +5252,20 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:createProfile/b:name) &gt; 0</tns:expression>
-              <tns:description>Profile name is required</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:createProfile/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:createProfile/b:name) &lt; 256</tns:expression>
               <tns:description>Profile name must be less than 256 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:createProfile/b:description) &lt; 1025</tns:expression>
               <tns:description>Description must be less than 1025 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:createProfile/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:createProfile/b:name) &gt; 0</tns:expression>
+              <tns:description>Profile name is required</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -5136,12 +5319,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:getProfileDetails/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:profileID) &gt; 0</tns:expression>
               <tns:description>Invalid or missing profileID</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:getProfileDetails/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -5161,16 +5344,16 @@
               <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:updateProfile/b:name) &lt; 256</tns:expression>
+              <tns:description>Profile name must be less than 256 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:updateProfile/b:description) &lt; 1025</tns:expression>
               <tns:description>Description must be less than 1025 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:updateProfile/b:profileID) &gt; 0</tns:expression>
               <tns:description>Invalid or missing profileID</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:updateProfile/b:name) &lt; 256</tns:expression>
-              <tns:description>Profile name must be less than 256 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -5186,12 +5369,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:profileID) &gt; 0</tns:expression>
-              <tns:description>Invalid or missing profileID</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:deleteProfile/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:profileID) &gt; 0</tns:expression>
+              <tns:description>Invalid or missing profileID</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -5207,16 +5390,16 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:getProfilePropertyWithLocale/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
               <tns:expression>string-length(//b:propertyName) &gt; 0</tns:expression>
               <tns:description>propertyName is required</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:profileID) &gt; 0</tns:expression>
               <tns:description>Invalid or missing profileID</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:getProfilePropertyWithLocale/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -5232,16 +5415,16 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:propertyName) &gt; 0</tns:expression>
-              <tns:description>propertyName is required</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:getProfileProperty/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:profileID) &gt; 0</tns:expression>
               <tns:description>Invalid or missing profileID</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:propertyName) &gt; 0</tns:expression>
+              <tns:description>propertyName is required</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -5286,20 +5469,20 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:profileID) &gt; 0</tns:expression>
-              <tns:description>Invalid or missing profileID</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:locale) &gt; 0</tns:expression>
-              <tns:description>locale is required</tns:description>
+              <tns:expression>string-length(//b:propertyName) &gt; 0</tns:expression>
+              <tns:description>propertyName is required</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:deleteLocaleValueInProfileProperty/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(//b:propertyName) &gt; 0</tns:expression>
-              <tns:description>propertyName is required</tns:description>
+              <tns:expression>string-length(//b:profileID) &gt; 0</tns:expression>
+              <tns:description>Invalid or missing profileID</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:locale) &gt; 0</tns:expression>
+              <tns:description>locale is required</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -5315,12 +5498,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:profileID) &gt; 0</tns:expression>
-              <tns:description>Invalid or missing profileID</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:linkProfileToAccount/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:profileID) &gt; 0</tns:expression>
+              <tns:description>Invalid or missing profileID</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -5455,12 +5638,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:username) &gt; 0</tns:expression>
-              <tns:description>Invalid or missing username</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:getProfileForUser/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:username) &gt; 0</tns:expression>
+              <tns:description>Invalid or missing username</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -5560,12 +5743,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:loadStagingtableFromS3Bucket/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:loadStagingtableFromS3Bucket/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -5608,6 +5791,23 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getSfdcAccountMapping">
+      <soap:operation soapAction="http://www.birst.com/getSfdcAccountMapping" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <tns:validation>
+          <tns:assertions>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:getSfdcAccountMapping/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
+            </tns:assert>
+          </tns:assertions>
+        </tns:validation>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="Logout">
       <soap:operation soapAction="http://www.birst.com/Logout" style="document" />
       <wsdl:input>
@@ -5640,12 +5840,12 @@
               <tns:description>username must be longer than 3 characters</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(//b:password) &gt; 5</tns:expression>
-              <tns:description>password must be longer than 5 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:password) &lt;= 32</tns:expression>
               <tns:description>password must be shorter than 32 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:password) &gt; 5</tns:expression>
+              <tns:description>password must be longer than 5 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -5671,12 +5871,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:clearCacheInSpace/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:clearCacheInSpace/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -5692,16 +5892,41 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:swapSpaceContents/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:sp1ID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:sp2ID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:swapSpaceContents/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
+            </tns:assert>
+          </tns:assertions>
+        </tns:validation>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="swapSpaceForPackages">
+      <soap:operation soapAction="http://www.birst.com/swapSpaceForPackages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <tns:validation>
+          <tns:assertions>
+            <tns:assert>
+              <tns:expression>string-length(//b:sp2Name) &lt; 256</tns:expression>
+              <tns:description>Space names must be less than 256 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:swapSpaceForPackages/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:sp1Name) &lt; 256</tns:expression>
+              <tns:description>Space names must be less than 256 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -5742,6 +5967,10 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
+              <tns:expression>string-length(//b:options) &lt;= 4096</tns:expression>
+              <tns:description>options must be less than or equal to 4096 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:copySpace/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
@@ -5752,10 +5981,6 @@
             <tns:assert>
               <tns:expression>string-length(//b:spToID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:options) &lt;= 4096</tns:expression>
-              <tns:description>options must be less than or equal to 4096 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -5771,15 +5996,15 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:spToID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:copyCatalogDirectory/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:spFromID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spToID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
           </tns:assertions>
@@ -5821,6 +6046,10 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:addUserToSpace/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
               <tns:expression>string-length(//b:userName) &gt; 3</tns:expression>
               <tns:description>username must be longer than 3 characters</tns:description>
             </tns:assert>
@@ -5831,10 +6060,6 @@
             <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:addUserToSpace/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -5871,6 +6096,10 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:removeUserFromSpace/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
@@ -5881,10 +6110,6 @@
             <tns:assert>
               <tns:expression>string-length(//b:userName) &lt; 256</tns:expression>
               <tns:description>username must be shorter than 256 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -5900,20 +6125,20 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:addGroupToSpace/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:groupName) &gt; 3</tns:expression>
               <tns:description>Group name must be longer than 3 characters</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(//b:groupName) &lt; 256</tns:expression>
-              <tns:description>Group name must be shorter than 256 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:addGroupToSpace/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:groupName) &lt; 256</tns:expression>
+              <tns:description>Group name must be shorter than 256 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -5929,20 +6154,20 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:groupName) &gt; 3</tns:expression>
-              <tns:description>Group name must be longer than 3 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:groupName) &lt; 256</tns:expression>
               <tns:description>Group name must be shorter than 256 characters</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:removeGroupFromSpace/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:groupName) &gt; 3</tns:expression>
+              <tns:description>Group name must be longer than 3 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -5979,6 +6204,10 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:listGroupAclsInSpace/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
@@ -5989,10 +6218,6 @@
             <tns:assert>
               <tns:expression>string-length(//b:groupName) &lt; 256</tns:expression>
               <tns:description>Group name must be shorter than 256 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -6008,18 +6233,6 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:aclTag) &gt; 3</tns:expression>
-              <tns:description>ACL tag name must be longer than 3 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:groupName) &gt; 3</tns:expression>
-              <tns:description>Group name must be longer than 3 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:groupName) &lt; 256</tns:expression>
-              <tns:description>Group name must be shorter than 256 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
@@ -6030,6 +6243,18 @@
             <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:addAclToGroupInSpace/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:groupName) &gt; 3</tns:expression>
+              <tns:description>Group name must be longer than 3 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:groupName) &lt; 256</tns:expression>
+              <tns:description>Group name must be shorter than 256 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:aclTag) &gt; 3</tns:expression>
+              <tns:description>ACL tag name must be longer than 3 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -6044,6 +6269,10 @@
         <soap:body use="literal" />
         <tns:validation>
           <tns:assertions>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
             <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:removeAclFromGroupInSpace/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
@@ -6064,10 +6293,6 @@
               <tns:expression>string-length(//b:aclTag) &lt;= 64</tns:expression>
               <tns:description>ACL tag name must be shorter than 64 characters</tns:description>
             </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
           </tns:assertions>
         </tns:validation>
       </wsdl:input>
@@ -6081,6 +6306,14 @@
         <soap:body use="literal" />
         <tns:validation>
           <tns:assertions>
+            <tns:assert>
+              <tns:expression>string-length(//b:groupName) &lt; 256</tns:expression>
+              <tns:description>Group name must be shorter than 256 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:addUserToGroupInSpace/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
+            </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
@@ -6096,14 +6329,6 @@
             <tns:assert>
               <tns:expression>string-length(//b:groupName) &gt; 3</tns:expression>
               <tns:description>Group name must be longer than 3 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:groupName) &lt; 256</tns:expression>
-              <tns:description>Group name must be shorter than 256 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:addUserToGroupInSpace/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -6123,16 +6348,8 @@
               <tns:description>username must be longer than 3 characters</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:userName) &lt; 256</tns:expression>
               <tns:description>username must be shorter than 256 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:groupName) &gt; 3</tns:expression>
-              <tns:description>Group name must be longer than 3 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:groupName) &lt; 256</tns:expression>
@@ -6141,6 +6358,14 @@
             <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:removeUserFromGroupInSpace/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:groupName) &gt; 3</tns:expression>
+              <tns:description>Group name must be longer than 3 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -6156,6 +6381,10 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
+              <tns:expression>string-length(//b:groupName) &lt; 256</tns:expression>
+              <tns:description>Group name must be shorter than 256 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:listUsersInGroupInSpace/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
@@ -6166,10 +6395,6 @@
             <tns:assert>
               <tns:expression>string-length(//b:groupName) &gt; 3</tns:expression>
               <tns:description>Group name must be longer than 3 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:groupName) &lt; 256</tns:expression>
-              <tns:description>Group name must be shorter than 256 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -6214,16 +6439,16 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:userName) &gt; 3</tns:expression>
-              <tns:description>username must be longer than 3 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:userName) &lt; 256</tns:expression>
               <tns:description>username must be shorter than 256 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:listProxyUsers/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:userName) &gt; 3</tns:expression>
+              <tns:description>username must be longer than 3 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -6264,24 +6489,24 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:userName) &lt; 256</tns:expression>
-              <tns:description>username must be shorter than 256 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:userName) &gt; 3</tns:expression>
-              <tns:description>username must be longer than 3 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:openID) &gt; 3</tns:expression>
-              <tns:description>proxyUserName must be longer than 3 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:openID) &lt; 256</tns:expression>
               <tns:description>proxyUserName must be shorter than 256 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:addOpenID/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:userName) &gt; 3</tns:expression>
+              <tns:description>username must be longer than 3 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:userName) &lt; 256</tns:expression>
+              <tns:description>username must be shorter than 256 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:openID) &gt; 3</tns:expression>
+              <tns:description>proxyUserName must be longer than 3 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -6297,16 +6522,16 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
+              <tns:expression>string-length(//b:userName) &lt; 256</tns:expression>
+              <tns:description>username must be shorter than 256 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
               <tns:expression>string-length(//b:openID) &gt; 3</tns:expression>
               <tns:description>proxyUserName must be longer than 3 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:userName) &gt; 3</tns:expression>
               <tns:description>username must be longer than 3 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:userName) &lt; 256</tns:expression>
-              <tns:description>username must be shorter than 256 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:openID) &lt; 256</tns:expression>
@@ -6330,20 +6555,20 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:setUserDefaultSpace/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:userName) &lt; 256</tns:expression>
-              <tns:description>username must be shorter than 256 characters</tns:description>
+              <tns:expression>string-length(//b:userName) &gt; 3</tns:expression>
+              <tns:description>username must be longer than 3 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(//b:userName) &gt; 3</tns:expression>
-              <tns:description>username must be longer than 3 characters</tns:description>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:setUserDefaultSpace/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:userName) &lt; 256</tns:expression>
+              <tns:description>username must be shorter than 256 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -6380,12 +6605,12 @@
               <tns:description>username must be longer than 3 characters</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:getUserRelease/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:userName) &lt; 256</tns:expression>
               <tns:description>username must be shorter than 256 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:getUserRelease/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -6401,6 +6626,10 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
+              <tns:expression>string-length(//b:userName) &lt; 256</tns:expression>
+              <tns:description>username must be shorter than 256 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
               <tns:expression>string-length(//b:release) &lt; 32</tns:expression>
               <tns:description>release must be shorter than 32 characters</tns:description>
             </tns:assert>
@@ -6411,10 +6640,6 @@
             <tns:assert>
               <tns:expression>string-length(//b:userName) &gt; 3</tns:expression>
               <tns:description>username must be longer than 3 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:userName) &lt; 256</tns:expression>
-              <tns:description>username must be shorter than 256 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:release) &gt; 1</tns:expression>
@@ -6434,16 +6659,16 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:enableUser/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:userName) &gt; 3</tns:expression>
               <tns:description>username must be longer than 3 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:userName) &lt; 256</tns:expression>
               <tns:description>username must be shorter than 256 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:enableUser/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -6459,16 +6684,16 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
+              <tns:expression>string-length(//b:userName) &lt; 256</tns:expression>
+              <tns:description>username must be shorter than 256 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:unlockUser/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:userName) &gt; 3</tns:expression>
               <tns:description>username must be longer than 3 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:userName) &lt; 256</tns:expression>
-              <tns:description>username must be shorter than 256 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -6530,6 +6755,10 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
+              <tns:expression>string-length(//b:proxyUserName) &lt; 256</tns:expression>
+              <tns:description>proxyUserName must be shorter than 256 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:addProxyUser/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
@@ -6545,10 +6774,6 @@
               <tns:expression>string-length(//b:proxyUserName) &gt; 3</tns:expression>
               <tns:description>proxyUserName must be longer than 3 characters</tns:description>
             </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:proxyUserName) &lt; 256</tns:expression>
-              <tns:description>proxyUserName must be shorter than 256 characters</tns:description>
-            </tns:assert>
           </tns:assertions>
         </tns:validation>
       </wsdl:input>
@@ -6562,6 +6787,10 @@
         <soap:body use="literal" />
         <tns:validation>
           <tns:assertions>
+            <tns:assert>
+              <tns:expression>string-length(//b:proxyUserName) &lt; 256</tns:expression>
+              <tns:description>proxyUserName must be shorter than 256 characters</tns:description>
+            </tns:assert>
             <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:removeProxyUser/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
@@ -6577,10 +6806,6 @@
             <tns:assert>
               <tns:expression>string-length(//b:proxyUserName) &gt; 3</tns:expression>
               <tns:description>proxyUserName must be longer than 3 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:proxyUserName) &lt; 256</tns:expression>
-              <tns:description>proxyUserName must be shorter than 256 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -6751,12 +6976,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:removeAllowedIPAddrForAccount/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:ip) &gt; 5</tns:expression>
               <tns:description>IP address length must be longer than 5 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:removeAllowedIPAddrForAccount/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -6856,6 +7081,35 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="removeProductFromUser">
+      <soap:operation soapAction="http://www.birst.com/removeProductFromUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <tns:validation>
+          <tns:assertions>
+            <tns:assert>
+              <tns:expression>string-length(//b:userName) &gt; 3</tns:expression>
+              <tns:description>username must be longer than 3 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:removeProductFromUser/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:userName) &lt; 256</tns:expression>
+              <tns:description>username must be shorter than 256 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>number(//b:productId) &gt; 0</tns:expression>
+              <tns:description>product id must contain a valid non-zero value</tns:description>
+            </tns:assert>
+          </tns:assertions>
+        </tns:validation>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="executeQueryInSpace">
       <soap:operation soapAction="http://www.birst.com/executeQueryInSpace" style="document" />
       <wsdl:input>
@@ -6892,16 +7146,16 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
+              <tns:expression>string-length(//b:reportName) &gt; 0</tns:expression>
+              <tns:description>ReportName must be present</tns:description>
+            </tns:assert>
+            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:getReportData/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:reportName) &gt; 0</tns:expression>
-              <tns:description>ReportName must be present</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -6967,16 +7221,16 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
+              <tns:expression>string-length(//b:Name) &gt; 0</tns:expression>
+              <tns:description>Expression Name must contain a value</tns:description>
+            </tns:assert>
+            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:updateExpression/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:Name) &gt; 0</tns:expression>
-              <tns:description>Expression Name must contain a value</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -7042,24 +7296,24 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:query) &gt; 0</tns:expression>
-              <tns:description>Query must contain a value</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:saveQueryReport/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:reportName) &gt; 0</tns:expression>
+              <tns:description>Report Name must contain a value</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:reportPath) &gt; 0</tns:expression>
               <tns:description>Report Path must contain a value</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(//b:reportName) &gt; 0</tns:expression>
-              <tns:description>Report Name must contain a value</tns:description>
+              <tns:expression>string-length(//b:query) &gt; 0</tns:expression>
+              <tns:description>Query must contain a value</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -7075,12 +7329,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:beginDataUpload/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:beginDataUpload/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -7117,11 +7371,11 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:dataUploadToken) = 32</tns:expression>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:uploadData/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:uploadData/b:token) = 32</tns:expression>
+              <tns:expression>string-length(//b:dataUploadToken) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
@@ -7138,11 +7392,11 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:dataUploadToken) = 32</tns:expression>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:finishDataUpload/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:finishDataUpload/b:token) = 32</tns:expression>
+              <tns:expression>string-length(//b:dataUploadToken) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
@@ -7222,11 +7476,11 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:jobToken) = 32</tns:expression>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:getJobStatus/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:getJobStatus/b:token) = 32</tns:expression>
+              <tns:expression>string-length(//b:jobToken) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
@@ -7243,12 +7497,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:publishData/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -7264,11 +7518,11 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:publishingToken) = 32</tns:expression>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:isPublishingComplete/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:isPublishingComplete/b:token) = 32</tns:expression>
+              <tns:expression>string-length(//b:publishingToken) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
@@ -7306,12 +7560,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:getVariablesForSpace/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -7327,12 +7581,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:getDirectoryContents/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -7369,12 +7623,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:setDirectoryPermission/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -7390,12 +7644,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:setDirectoryPermissions/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:setDirectoryPermissions/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -7411,12 +7665,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:setCatalogPermissions/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:setCatalogPermissions/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -7431,10 +7685,6 @@
         <soap:body use="literal" />
         <tns:validation>
           <tns:assertions>
-            <tns:assert>
-              <tns:expression>string-length(//b:toDir) &lt; 1024</tns:expression>
-              <tns:description>To object must be less than 1024 characters</tns:description>
-            </tns:assert>
             <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:copyFileOrDirectory/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
@@ -7451,6 +7701,10 @@
               <tns:expression>string-length(//b:fileOrDir) &lt; 1024</tns:expression>
               <tns:description>From object must be less than 1024 characters</tns:description>
             </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:toDir) &lt; 1024</tns:expression>
+              <tns:description>To object must be less than 1024 characters</tns:description>
+            </tns:assert>
           </tns:assertions>
         </tns:validation>
       </wsdl:input>
@@ -7464,6 +7718,10 @@
         <soap:body use="literal" />
         <tns:validation>
           <tns:assertions>
+            <tns:assert>
+              <tns:expression>string-length(//b:fromFileOrDir) &lt; 1024</tns:expression>
+              <tns:description>From object must be less than 1024 characters</tns:description>
+            </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:toFileOrDir) &lt; 1024</tns:expression>
               <tns:description>To object must be less than 1024 characters</tns:description>
@@ -7479,10 +7737,6 @@
             <tns:assert>
               <tns:expression>string-length(//b:toSpaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:fromFileOrDir) &lt; 1024</tns:expression>
-              <tns:description>From object must be less than 1024 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -7523,8 +7777,8 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:newName) &lt; 256</tns:expression>
-              <tns:description>New name must be less than 256 characters</tns:description>
+              <tns:expression>string-length(//b:fileOrDir) &lt; 1024</tns:expression>
+              <tns:description>Location must be less than 1024 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:renameFileOrDirectory/b:token) = 32</tns:expression>
@@ -7535,8 +7789,8 @@
               <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(//b:fileOrDir) &lt; 1024</tns:expression>
-              <tns:description>Location must be less than 1024 characters</tns:description>
+              <tns:expression>string-length(//b:newName) &lt; 256</tns:expression>
+              <tns:description>New name must be less than 256 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -7552,8 +7806,8 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:parentDir) &lt; 256</tns:expression>
-              <tns:description>New directory must be less than 256 characters</tns:description>
+              <tns:expression>string-length(//b:parentDir) &lt; 1024</tns:expression>
+              <tns:description>Parent directory must be less than 1024 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:createNewDirectory/b:token) = 32</tns:expression>
@@ -7564,8 +7818,8 @@
               <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(//b:parentDir) &lt; 1024</tns:expression>
-              <tns:description>Parent directory must be less than 1024 characters</tns:description>
+              <tns:expression>string-length(//b:parentDir) &lt; 256</tns:expression>
+              <tns:description>New directory must be less than 256 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -7581,16 +7835,16 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
+              <tns:expression>string-length(//b:parentDir) &lt; 1024</tns:expression>
+              <tns:description>Parent directory must be less than 1024 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:checkAndCreateDirectory/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(//b:parentDir) &lt; 1024</tns:expression>
-              <tns:description>Parent directory must be less than 1024 characters</tns:description>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:parentDir) &lt; 256</tns:expression>
@@ -7631,16 +7885,16 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:comments) &lt; 2048</tns:expression>
-              <tns:description>Space comments must be less than 2048 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:createNewSpace/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:spaceName) &lt; 256</tns:expression>
               <tns:description>Space names must be less than 256 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:comments) &lt; 2048</tns:expression>
+              <tns:description>Space comments must be less than 2048 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -7656,12 +7910,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:spaceName) &lt; 256</tns:expression>
-              <tns:description>Space names must be less than 256 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:createNewSpaceUsingSchema/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceName) &lt; 256</tns:expression>
+              <tns:description>Space names must be less than 256 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:schemaName) &lt; 256</tns:expression>
@@ -7706,15 +7960,15 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
+              <tns:expression>string-length(//b:toSpaceId) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:copyCustomSubjectArea/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:fromSpaceId) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:toSpaceId) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
           </tns:assertions>
@@ -7752,12 +8006,33 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:getSubjectAreaContent/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
+          </tns:assertions>
+        </tns:validation>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getExtendedSubjectArea">
+      <soap:operation soapAction="http://www.birst.com/getExtendedSubjectArea" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <tns:validation>
+          <tns:assertions>
             <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:getExtendedSubjectArea/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -7819,20 +8094,20 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:renameSubjectArea/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
+              <tns:expression>string-length(//b:newName) &gt; 0</tns:expression>
+              <tns:description>New Name is required</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(//b:name) &gt; 0</tns:expression>
-              <tns:description>Name is required</tns:description>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:renameSubjectArea/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(//b:newName) &gt; 0</tns:expression>
-              <tns:description>New Name is required</tns:description>
+              <tns:expression>string-length(//b:name) &gt; 0</tns:expression>
+              <tns:description>Name is required</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -7898,20 +8173,20 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:setSubjectAreaDescription/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
+              <tns:expression>string-length(//b:name) &gt; 0</tns:expression>
+              <tns:description>Name is required</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(//b:description) &gt; 0</tns:expression>
-              <tns:description>Description is required</tns:description>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:setSubjectAreaDescription/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(//b:name) &gt; 0</tns:expression>
-              <tns:description>Name is required</tns:description>
+              <tns:expression>string-length(//b:description) &gt; 0</tns:expression>
+              <tns:description>Description is required</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -7977,12 +8252,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:addExpressionToSubjectArea/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:expressionName) &gt; 0</tns:expression>
@@ -8010,16 +8285,16 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:expressionName) &gt; 0</tns:expression>
-              <tns:description>expression name is required</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:removeExpressionFromSubjectArea/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:expressionName) &gt; 0</tns:expression>
+              <tns:description>expression name is required</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:csaName) &gt; 0</tns:expression>
@@ -8043,12 +8318,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:deleteSubjectArea/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:deleteSubjectArea/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -8102,12 +8377,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:deleteAllDataFromSpace/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:deleteAllDataFromSpace/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -8123,12 +8398,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:executeScheduledReport/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:spaceId) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:executeScheduledReport/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -8144,12 +8419,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:exportReportToPNG/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:spaceId) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:exportReportToPNG/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -8270,12 +8545,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:exportToken) = 32</tns:expression>
-              <tns:description>Invalid export token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:getExportData/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:exportToken) = 32</tns:expression>
+              <tns:description>Invalid export token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -8295,16 +8570,16 @@
               <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(//b:password) &lt; 256</tns:expression>
-              <tns:description>Password length must shorter than 256 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:password) &gt; 7</tns:expression>
               <tns:description>Password must be atleast 8 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:password) &lt; 256</tns:expression>
+              <tns:description>Password length must shorter than 256 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -8320,12 +8595,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:extractSalesforceData/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -8341,12 +8616,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:extractConnectorData/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -8362,12 +8637,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:extractCloudConnectorData/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -8383,20 +8658,20 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:configfile) &gt; 11</tns:expression>
-              <tns:description>Configuration file name length must be 12 or more characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:configfile) &lt; 256</tns:expression>
-              <tns:description>Configuration file name length must shorter than 256 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:getSpaceJNLPFile/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:configfile) &gt; 11</tns:expression>
+              <tns:description>Configuration file name length must be 12 or more characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:configfile) &lt; 256</tns:expression>
+              <tns:description>Configuration file name length must shorter than 256 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -8412,12 +8687,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:getSpaceStatistics/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -8541,8 +8816,8 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:userName) &lt; 256</tns:expression>
-              <tns:description>username must be shorter than 256 characters</tns:description>
+              <tns:expression>string-length(//b:password) &gt; 0</tns:expression>
+              <tns:description>password length must be 1 or more characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:password) &lt; 256</tns:expression>
@@ -8557,8 +8832,8 @@
               <tns:description>username must be longer than 3 characters</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(//b:password) &gt; 0</tns:expression>
-              <tns:description>password length must be 1 or more characters</tns:description>
+              <tns:expression>string-length(//b:userName) &lt; 256</tns:expression>
+              <tns:description>username must be shorter than 256 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -8595,20 +8870,20 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
+              <tns:expression>string-length(//b:newDashName) &lt;= 64</tns:expression>
+              <tns:description>new dashboard name length must be shorter than 64 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:renameDashboard/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(//b:newDashName) &gt; 0</tns:expression>
-              <tns:description>new dashboard name length must be 1 or more characters</tns:description>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(//b:newDashName) &lt;= 64</tns:expression>
-              <tns:description>new dashboard name length must be shorter than 64 characters</tns:description>
+              <tns:expression>string-length(//b:newDashName) &gt; 0</tns:expression>
+              <tns:description>new dashboard name length must be 1 or more characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -8653,12 +8928,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:enableSourceInSpace/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -8718,10 +8993,13 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CommandWebServiceSoap12" type="tns:CommandWebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="setSpaceName">
-      <soap:operation soapAction="http://www.birst.com/setSpaceName" style="document" />
+      <soap12:operation soapAction="http://www.birst.com/setSpaceName" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
         <tns:validation>
           <tns:assertions>
             <tns:assert>
@@ -8744,19 +9022,15 @@
         </tns:validation>
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="setSpaceComments">
-      <soap:operation soapAction="http://www.birst.com/setSpaceComments" style="document" />
+      <soap12:operation soapAction="http://www.birst.com/setSpaceComments" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
         <tns:validation>
           <tns:assertions>
-            <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:spaceComments) &lt; 2048</tns:expression>
               <tns:description>Space names must be less than 256 characters</tns:description>
@@ -8765,26 +9039,30 @@
               <tns:expression>string-length(/s:Envelope/s:Body/b:setSpaceComments/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
           </tns:assertions>
         </tns:validation>
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="setEmailFromForSpace">
-      <soap:operation soapAction="http://www.birst.com/setEmailFromForSpace" style="document" />
+      <soap12:operation soapAction="http://www.birst.com/setEmailFromForSpace" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:setEmailFromForSpace/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:email) &gt; 0</tns:expression>
               <tns:description>Email is required</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:setEmailFromForSpace/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
@@ -8794,12 +9072,9 @@
         </tns:validation>
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-  </wsdl:binding>
-  <wsdl:binding name="CommandWebServiceSoap12" type="tns:CommandWebServiceSoap">
-    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="setEmailSubjectForSpace">
       <soap12:operation soapAction="http://www.birst.com/setEmailSubjectForSpace" style="document" />
       <wsdl:input>
@@ -8807,12 +9082,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:setEmailSubjectForSpace/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -8853,12 +9128,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:setForegroundColorForSpace/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:fgcolor) = 6</tns:expression>
@@ -8920,12 +9195,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:getSourcesList/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:getSourcesList/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -8941,12 +9216,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:getSourceDetails/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:getSourceDetails/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -8962,12 +9237,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:setSourceDetails/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:setSourceDetails/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -8983,12 +9258,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:mapLiveAccessSource/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:mapLiveAccessSource/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -9113,12 +9388,12 @@
               <tns:description>Space names must be less than 256 characters</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:getSpaceComments/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:getSpaceComments/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -9201,20 +9476,20 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:createProfile/b:name) &gt; 0</tns:expression>
-              <tns:description>Profile name is required</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:createProfile/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:createProfile/b:name) &lt; 256</tns:expression>
               <tns:description>Profile name must be less than 256 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:createProfile/b:description) &lt; 1025</tns:expression>
               <tns:description>Description must be less than 1025 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:createProfile/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:createProfile/b:name) &gt; 0</tns:expression>
+              <tns:description>Profile name is required</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -9268,12 +9543,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:getProfileDetails/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:profileID) &gt; 0</tns:expression>
               <tns:description>Invalid or missing profileID</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:getProfileDetails/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -9293,16 +9568,16 @@
               <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:updateProfile/b:name) &lt; 256</tns:expression>
+              <tns:description>Profile name must be less than 256 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:updateProfile/b:description) &lt; 1025</tns:expression>
               <tns:description>Description must be less than 1025 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:updateProfile/b:profileID) &gt; 0</tns:expression>
               <tns:description>Invalid or missing profileID</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:updateProfile/b:name) &lt; 256</tns:expression>
-              <tns:description>Profile name must be less than 256 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -9318,12 +9593,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:profileID) &gt; 0</tns:expression>
-              <tns:description>Invalid or missing profileID</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:deleteProfile/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:profileID) &gt; 0</tns:expression>
+              <tns:description>Invalid or missing profileID</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -9339,16 +9614,16 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:getProfilePropertyWithLocale/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
               <tns:expression>string-length(//b:propertyName) &gt; 0</tns:expression>
               <tns:description>propertyName is required</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:profileID) &gt; 0</tns:expression>
               <tns:description>Invalid or missing profileID</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:getProfilePropertyWithLocale/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -9364,16 +9639,16 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:propertyName) &gt; 0</tns:expression>
-              <tns:description>propertyName is required</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:getProfileProperty/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:profileID) &gt; 0</tns:expression>
               <tns:description>Invalid or missing profileID</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:propertyName) &gt; 0</tns:expression>
+              <tns:description>propertyName is required</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -9418,20 +9693,20 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:profileID) &gt; 0</tns:expression>
-              <tns:description>Invalid or missing profileID</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:locale) &gt; 0</tns:expression>
-              <tns:description>locale is required</tns:description>
+              <tns:expression>string-length(//b:propertyName) &gt; 0</tns:expression>
+              <tns:description>propertyName is required</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:deleteLocaleValueInProfileProperty/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(//b:propertyName) &gt; 0</tns:expression>
-              <tns:description>propertyName is required</tns:description>
+              <tns:expression>string-length(//b:profileID) &gt; 0</tns:expression>
+              <tns:description>Invalid or missing profileID</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:locale) &gt; 0</tns:expression>
+              <tns:description>locale is required</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -9447,12 +9722,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:profileID) &gt; 0</tns:expression>
-              <tns:description>Invalid or missing profileID</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:linkProfileToAccount/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:profileID) &gt; 0</tns:expression>
+              <tns:description>Invalid or missing profileID</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -9587,12 +9862,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:username) &gt; 0</tns:expression>
-              <tns:description>Invalid or missing username</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:getProfileForUser/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:username) &gt; 0</tns:expression>
+              <tns:description>Invalid or missing username</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -9692,12 +9967,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:loadStagingtableFromS3Bucket/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:loadStagingtableFromS3Bucket/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -9740,6 +10015,23 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getSfdcAccountMapping">
+      <soap12:operation soapAction="http://www.birst.com/getSfdcAccountMapping" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <tns:validation>
+          <tns:assertions>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:getSfdcAccountMapping/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
+            </tns:assert>
+          </tns:assertions>
+        </tns:validation>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="Logout">
       <soap12:operation soapAction="http://www.birst.com/Logout" style="document" />
       <wsdl:input>
@@ -9772,12 +10064,12 @@
               <tns:description>username must be longer than 3 characters</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(//b:password) &gt; 5</tns:expression>
-              <tns:description>password must be longer than 5 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:password) &lt;= 32</tns:expression>
               <tns:description>password must be shorter than 32 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:password) &gt; 5</tns:expression>
+              <tns:description>password must be longer than 5 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -9803,12 +10095,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:clearCacheInSpace/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:clearCacheInSpace/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -9824,16 +10116,41 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:swapSpaceContents/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:sp1ID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:sp2ID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:swapSpaceContents/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
+            </tns:assert>
+          </tns:assertions>
+        </tns:validation>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="swapSpaceForPackages">
+      <soap12:operation soapAction="http://www.birst.com/swapSpaceForPackages" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <tns:validation>
+          <tns:assertions>
+            <tns:assert>
+              <tns:expression>string-length(//b:sp2Name) &lt; 256</tns:expression>
+              <tns:description>Space names must be less than 256 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:swapSpaceForPackages/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:sp1Name) &lt; 256</tns:expression>
+              <tns:description>Space names must be less than 256 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -9874,6 +10191,10 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
+              <tns:expression>string-length(//b:options) &lt;= 4096</tns:expression>
+              <tns:description>options must be less than or equal to 4096 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:copySpace/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
@@ -9884,10 +10205,6 @@
             <tns:assert>
               <tns:expression>string-length(//b:spToID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:options) &lt;= 4096</tns:expression>
-              <tns:description>options must be less than or equal to 4096 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -9903,15 +10220,15 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:spToID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:copyCatalogDirectory/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:spFromID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spToID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
           </tns:assertions>
@@ -9953,6 +10270,10 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:addUserToSpace/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
               <tns:expression>string-length(//b:userName) &gt; 3</tns:expression>
               <tns:description>username must be longer than 3 characters</tns:description>
             </tns:assert>
@@ -9963,10 +10284,6 @@
             <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:addUserToSpace/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -10003,6 +10320,10 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:removeUserFromSpace/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
@@ -10013,10 +10334,6 @@
             <tns:assert>
               <tns:expression>string-length(//b:userName) &lt; 256</tns:expression>
               <tns:description>username must be shorter than 256 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -10032,20 +10349,20 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:addGroupToSpace/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:groupName) &gt; 3</tns:expression>
               <tns:description>Group name must be longer than 3 characters</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(//b:groupName) &lt; 256</tns:expression>
-              <tns:description>Group name must be shorter than 256 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:addGroupToSpace/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:groupName) &lt; 256</tns:expression>
+              <tns:description>Group name must be shorter than 256 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -10061,20 +10378,20 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:groupName) &gt; 3</tns:expression>
-              <tns:description>Group name must be longer than 3 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:groupName) &lt; 256</tns:expression>
               <tns:description>Group name must be shorter than 256 characters</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:removeGroupFromSpace/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:groupName) &gt; 3</tns:expression>
+              <tns:description>Group name must be longer than 3 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -10111,6 +10428,10 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:listGroupAclsInSpace/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
@@ -10121,10 +10442,6 @@
             <tns:assert>
               <tns:expression>string-length(//b:groupName) &lt; 256</tns:expression>
               <tns:description>Group name must be shorter than 256 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -10140,18 +10457,6 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:aclTag) &gt; 3</tns:expression>
-              <tns:description>ACL tag name must be longer than 3 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:groupName) &gt; 3</tns:expression>
-              <tns:description>Group name must be longer than 3 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:groupName) &lt; 256</tns:expression>
-              <tns:description>Group name must be shorter than 256 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
@@ -10162,6 +10467,18 @@
             <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:addAclToGroupInSpace/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:groupName) &gt; 3</tns:expression>
+              <tns:description>Group name must be longer than 3 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:groupName) &lt; 256</tns:expression>
+              <tns:description>Group name must be shorter than 256 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:aclTag) &gt; 3</tns:expression>
+              <tns:description>ACL tag name must be longer than 3 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -10176,6 +10493,10 @@
         <soap12:body use="literal" />
         <tns:validation>
           <tns:assertions>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
             <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:removeAclFromGroupInSpace/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
@@ -10196,10 +10517,6 @@
               <tns:expression>string-length(//b:aclTag) &lt;= 64</tns:expression>
               <tns:description>ACL tag name must be shorter than 64 characters</tns:description>
             </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
           </tns:assertions>
         </tns:validation>
       </wsdl:input>
@@ -10213,6 +10530,14 @@
         <soap12:body use="literal" />
         <tns:validation>
           <tns:assertions>
+            <tns:assert>
+              <tns:expression>string-length(//b:groupName) &lt; 256</tns:expression>
+              <tns:description>Group name must be shorter than 256 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:addUserToGroupInSpace/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
+            </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
@@ -10228,14 +10553,6 @@
             <tns:assert>
               <tns:expression>string-length(//b:groupName) &gt; 3</tns:expression>
               <tns:description>Group name must be longer than 3 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:groupName) &lt; 256</tns:expression>
-              <tns:description>Group name must be shorter than 256 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:addUserToGroupInSpace/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -10255,16 +10572,8 @@
               <tns:description>username must be longer than 3 characters</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:userName) &lt; 256</tns:expression>
               <tns:description>username must be shorter than 256 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:groupName) &gt; 3</tns:expression>
-              <tns:description>Group name must be longer than 3 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:groupName) &lt; 256</tns:expression>
@@ -10273,6 +10582,14 @@
             <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:removeUserFromGroupInSpace/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:groupName) &gt; 3</tns:expression>
+              <tns:description>Group name must be longer than 3 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -10288,6 +10605,10 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
+              <tns:expression>string-length(//b:groupName) &lt; 256</tns:expression>
+              <tns:description>Group name must be shorter than 256 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:listUsersInGroupInSpace/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
@@ -10298,10 +10619,6 @@
             <tns:assert>
               <tns:expression>string-length(//b:groupName) &gt; 3</tns:expression>
               <tns:description>Group name must be longer than 3 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:groupName) &lt; 256</tns:expression>
-              <tns:description>Group name must be shorter than 256 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -10346,16 +10663,16 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:userName) &gt; 3</tns:expression>
-              <tns:description>username must be longer than 3 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:userName) &lt; 256</tns:expression>
               <tns:description>username must be shorter than 256 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:listProxyUsers/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:userName) &gt; 3</tns:expression>
+              <tns:description>username must be longer than 3 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -10396,24 +10713,24 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:userName) &lt; 256</tns:expression>
-              <tns:description>username must be shorter than 256 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:userName) &gt; 3</tns:expression>
-              <tns:description>username must be longer than 3 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:openID) &gt; 3</tns:expression>
-              <tns:description>proxyUserName must be longer than 3 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:openID) &lt; 256</tns:expression>
               <tns:description>proxyUserName must be shorter than 256 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:addOpenID/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:userName) &gt; 3</tns:expression>
+              <tns:description>username must be longer than 3 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:userName) &lt; 256</tns:expression>
+              <tns:description>username must be shorter than 256 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:openID) &gt; 3</tns:expression>
+              <tns:description>proxyUserName must be longer than 3 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -10429,16 +10746,16 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
+              <tns:expression>string-length(//b:userName) &lt; 256</tns:expression>
+              <tns:description>username must be shorter than 256 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
               <tns:expression>string-length(//b:openID) &gt; 3</tns:expression>
               <tns:description>proxyUserName must be longer than 3 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:userName) &gt; 3</tns:expression>
               <tns:description>username must be longer than 3 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:userName) &lt; 256</tns:expression>
-              <tns:description>username must be shorter than 256 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:openID) &lt; 256</tns:expression>
@@ -10462,20 +10779,20 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:setUserDefaultSpace/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:userName) &lt; 256</tns:expression>
-              <tns:description>username must be shorter than 256 characters</tns:description>
+              <tns:expression>string-length(//b:userName) &gt; 3</tns:expression>
+              <tns:description>username must be longer than 3 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(//b:userName) &gt; 3</tns:expression>
-              <tns:description>username must be longer than 3 characters</tns:description>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:setUserDefaultSpace/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:userName) &lt; 256</tns:expression>
+              <tns:description>username must be shorter than 256 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -10512,12 +10829,12 @@
               <tns:description>username must be longer than 3 characters</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:getUserRelease/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:userName) &lt; 256</tns:expression>
               <tns:description>username must be shorter than 256 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:getUserRelease/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -10533,6 +10850,10 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
+              <tns:expression>string-length(//b:userName) &lt; 256</tns:expression>
+              <tns:description>username must be shorter than 256 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
               <tns:expression>string-length(//b:release) &lt; 32</tns:expression>
               <tns:description>release must be shorter than 32 characters</tns:description>
             </tns:assert>
@@ -10543,10 +10864,6 @@
             <tns:assert>
               <tns:expression>string-length(//b:userName) &gt; 3</tns:expression>
               <tns:description>username must be longer than 3 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:userName) &lt; 256</tns:expression>
-              <tns:description>username must be shorter than 256 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:release) &gt; 1</tns:expression>
@@ -10566,16 +10883,16 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:enableUser/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:userName) &gt; 3</tns:expression>
               <tns:description>username must be longer than 3 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:userName) &lt; 256</tns:expression>
               <tns:description>username must be shorter than 256 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:enableUser/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -10591,16 +10908,16 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
+              <tns:expression>string-length(//b:userName) &lt; 256</tns:expression>
+              <tns:description>username must be shorter than 256 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:unlockUser/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:userName) &gt; 3</tns:expression>
               <tns:description>username must be longer than 3 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:userName) &lt; 256</tns:expression>
-              <tns:description>username must be shorter than 256 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -10662,6 +10979,10 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
+              <tns:expression>string-length(//b:proxyUserName) &lt; 256</tns:expression>
+              <tns:description>proxyUserName must be shorter than 256 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:addProxyUser/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
@@ -10677,10 +10998,6 @@
               <tns:expression>string-length(//b:proxyUserName) &gt; 3</tns:expression>
               <tns:description>proxyUserName must be longer than 3 characters</tns:description>
             </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:proxyUserName) &lt; 256</tns:expression>
-              <tns:description>proxyUserName must be shorter than 256 characters</tns:description>
-            </tns:assert>
           </tns:assertions>
         </tns:validation>
       </wsdl:input>
@@ -10694,6 +11011,10 @@
         <soap12:body use="literal" />
         <tns:validation>
           <tns:assertions>
+            <tns:assert>
+              <tns:expression>string-length(//b:proxyUserName) &lt; 256</tns:expression>
+              <tns:description>proxyUserName must be shorter than 256 characters</tns:description>
+            </tns:assert>
             <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:removeProxyUser/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
@@ -10709,10 +11030,6 @@
             <tns:assert>
               <tns:expression>string-length(//b:proxyUserName) &gt; 3</tns:expression>
               <tns:description>proxyUserName must be longer than 3 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:proxyUserName) &lt; 256</tns:expression>
-              <tns:description>proxyUserName must be shorter than 256 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -10883,12 +11200,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:removeAllowedIPAddrForAccount/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:ip) &gt; 5</tns:expression>
               <tns:description>IP address length must be longer than 5 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:removeAllowedIPAddrForAccount/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -10988,6 +11305,35 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="removeProductFromUser">
+      <soap12:operation soapAction="http://www.birst.com/removeProductFromUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <tns:validation>
+          <tns:assertions>
+            <tns:assert>
+              <tns:expression>string-length(//b:userName) &gt; 3</tns:expression>
+              <tns:description>username must be longer than 3 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:removeProductFromUser/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:userName) &lt; 256</tns:expression>
+              <tns:description>username must be shorter than 256 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>number(//b:productId) &gt; 0</tns:expression>
+              <tns:description>product id must contain a valid non-zero value</tns:description>
+            </tns:assert>
+          </tns:assertions>
+        </tns:validation>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="executeQueryInSpace">
       <soap12:operation soapAction="http://www.birst.com/executeQueryInSpace" style="document" />
       <wsdl:input>
@@ -11024,16 +11370,16 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
+              <tns:expression>string-length(//b:reportName) &gt; 0</tns:expression>
+              <tns:description>ReportName must be present</tns:description>
+            </tns:assert>
+            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:getReportData/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:reportName) &gt; 0</tns:expression>
-              <tns:description>ReportName must be present</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -11099,16 +11445,16 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
+              <tns:expression>string-length(//b:Name) &gt; 0</tns:expression>
+              <tns:description>Expression Name must contain a value</tns:description>
+            </tns:assert>
+            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:updateExpression/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:Name) &gt; 0</tns:expression>
-              <tns:description>Expression Name must contain a value</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -11174,24 +11520,24 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:query) &gt; 0</tns:expression>
-              <tns:description>Query must contain a value</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:saveQueryReport/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:reportName) &gt; 0</tns:expression>
+              <tns:description>Report Name must contain a value</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:reportPath) &gt; 0</tns:expression>
               <tns:description>Report Path must contain a value</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(//b:reportName) &gt; 0</tns:expression>
-              <tns:description>Report Name must contain a value</tns:description>
+              <tns:expression>string-length(//b:query) &gt; 0</tns:expression>
+              <tns:description>Query must contain a value</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -11207,12 +11553,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:beginDataUpload/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:beginDataUpload/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -11249,11 +11595,11 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:dataUploadToken) = 32</tns:expression>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:uploadData/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:uploadData/b:token) = 32</tns:expression>
+              <tns:expression>string-length(//b:dataUploadToken) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
@@ -11270,11 +11616,11 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:dataUploadToken) = 32</tns:expression>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:finishDataUpload/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:finishDataUpload/b:token) = 32</tns:expression>
+              <tns:expression>string-length(//b:dataUploadToken) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
@@ -11354,11 +11700,11 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:jobToken) = 32</tns:expression>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:getJobStatus/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:getJobStatus/b:token) = 32</tns:expression>
+              <tns:expression>string-length(//b:jobToken) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
@@ -11375,12 +11721,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:publishData/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -11396,11 +11742,11 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:publishingToken) = 32</tns:expression>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:isPublishingComplete/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:isPublishingComplete/b:token) = 32</tns:expression>
+              <tns:expression>string-length(//b:publishingToken) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
@@ -11438,12 +11784,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:getVariablesForSpace/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -11459,12 +11805,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:getDirectoryContents/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -11501,12 +11847,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:setDirectoryPermission/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -11522,12 +11868,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:setDirectoryPermissions/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:setDirectoryPermissions/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -11543,12 +11889,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:setCatalogPermissions/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:setCatalogPermissions/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -11563,10 +11909,6 @@
         <soap12:body use="literal" />
         <tns:validation>
           <tns:assertions>
-            <tns:assert>
-              <tns:expression>string-length(//b:toDir) &lt; 1024</tns:expression>
-              <tns:description>To object must be less than 1024 characters</tns:description>
-            </tns:assert>
             <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:copyFileOrDirectory/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
@@ -11583,6 +11925,10 @@
               <tns:expression>string-length(//b:fileOrDir) &lt; 1024</tns:expression>
               <tns:description>From object must be less than 1024 characters</tns:description>
             </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:toDir) &lt; 1024</tns:expression>
+              <tns:description>To object must be less than 1024 characters</tns:description>
+            </tns:assert>
           </tns:assertions>
         </tns:validation>
       </wsdl:input>
@@ -11596,6 +11942,10 @@
         <soap12:body use="literal" />
         <tns:validation>
           <tns:assertions>
+            <tns:assert>
+              <tns:expression>string-length(//b:fromFileOrDir) &lt; 1024</tns:expression>
+              <tns:description>From object must be less than 1024 characters</tns:description>
+            </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:toFileOrDir) &lt; 1024</tns:expression>
               <tns:description>To object must be less than 1024 characters</tns:description>
@@ -11611,10 +11961,6 @@
             <tns:assert>
               <tns:expression>string-length(//b:toSpaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:fromFileOrDir) &lt; 1024</tns:expression>
-              <tns:description>From object must be less than 1024 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -11655,8 +12001,8 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:newName) &lt; 256</tns:expression>
-              <tns:description>New name must be less than 256 characters</tns:description>
+              <tns:expression>string-length(//b:fileOrDir) &lt; 1024</tns:expression>
+              <tns:description>Location must be less than 1024 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:renameFileOrDirectory/b:token) = 32</tns:expression>
@@ -11667,8 +12013,8 @@
               <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(//b:fileOrDir) &lt; 1024</tns:expression>
-              <tns:description>Location must be less than 1024 characters</tns:description>
+              <tns:expression>string-length(//b:newName) &lt; 256</tns:expression>
+              <tns:description>New name must be less than 256 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -11684,8 +12030,8 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:parentDir) &lt; 256</tns:expression>
-              <tns:description>New directory must be less than 256 characters</tns:description>
+              <tns:expression>string-length(//b:parentDir) &lt; 1024</tns:expression>
+              <tns:description>Parent directory must be less than 1024 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:createNewDirectory/b:token) = 32</tns:expression>
@@ -11696,8 +12042,8 @@
               <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(//b:parentDir) &lt; 1024</tns:expression>
-              <tns:description>Parent directory must be less than 1024 characters</tns:description>
+              <tns:expression>string-length(//b:parentDir) &lt; 256</tns:expression>
+              <tns:description>New directory must be less than 256 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -11713,16 +12059,16 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
+              <tns:expression>string-length(//b:parentDir) &lt; 1024</tns:expression>
+              <tns:description>Parent directory must be less than 1024 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:checkAndCreateDirectory/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(//b:parentDir) &lt; 1024</tns:expression>
-              <tns:description>Parent directory must be less than 1024 characters</tns:description>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:parentDir) &lt; 256</tns:expression>
@@ -11763,16 +12109,16 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:comments) &lt; 2048</tns:expression>
-              <tns:description>Space comments must be less than 2048 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:createNewSpace/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:spaceName) &lt; 256</tns:expression>
               <tns:description>Space names must be less than 256 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:comments) &lt; 2048</tns:expression>
+              <tns:description>Space comments must be less than 2048 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -11788,12 +12134,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:spaceName) &lt; 256</tns:expression>
-              <tns:description>Space names must be less than 256 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:createNewSpaceUsingSchema/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceName) &lt; 256</tns:expression>
+              <tns:description>Space names must be less than 256 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:schemaName) &lt; 256</tns:expression>
@@ -11838,15 +12184,15 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
+              <tns:expression>string-length(//b:toSpaceId) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:copyCustomSubjectArea/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:fromSpaceId) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:toSpaceId) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
           </tns:assertions>
@@ -11884,12 +12230,33 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:getSubjectAreaContent/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
+          </tns:assertions>
+        </tns:validation>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getExtendedSubjectArea">
+      <soap12:operation soapAction="http://www.birst.com/getExtendedSubjectArea" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <tns:validation>
+          <tns:assertions>
             <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:getExtendedSubjectArea/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -11951,20 +12318,20 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:renameSubjectArea/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
+              <tns:expression>string-length(//b:newName) &gt; 0</tns:expression>
+              <tns:description>New Name is required</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(//b:name) &gt; 0</tns:expression>
-              <tns:description>Name is required</tns:description>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:renameSubjectArea/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(//b:newName) &gt; 0</tns:expression>
-              <tns:description>New Name is required</tns:description>
+              <tns:expression>string-length(//b:name) &gt; 0</tns:expression>
+              <tns:description>Name is required</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -12030,20 +12397,20 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:setSubjectAreaDescription/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
+              <tns:expression>string-length(//b:name) &gt; 0</tns:expression>
+              <tns:description>Name is required</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(//b:description) &gt; 0</tns:expression>
-              <tns:description>Description is required</tns:description>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:setSubjectAreaDescription/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(//b:name) &gt; 0</tns:expression>
-              <tns:description>Name is required</tns:description>
+              <tns:expression>string-length(//b:description) &gt; 0</tns:expression>
+              <tns:description>Description is required</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -12109,12 +12476,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:addExpressionToSubjectArea/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:expressionName) &gt; 0</tns:expression>
@@ -12142,16 +12509,16 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:expressionName) &gt; 0</tns:expression>
-              <tns:description>expression name is required</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:removeExpressionFromSubjectArea/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:expressionName) &gt; 0</tns:expression>
+              <tns:description>expression name is required</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:csaName) &gt; 0</tns:expression>
@@ -12175,12 +12542,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:deleteSubjectArea/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:deleteSubjectArea/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -12234,12 +12601,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:deleteAllDataFromSpace/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:deleteAllDataFromSpace/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -12255,12 +12622,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:executeScheduledReport/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:spaceId) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:executeScheduledReport/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -12276,12 +12643,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:exportReportToPNG/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:spaceId) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(/s:Envelope/s:Body/b:exportReportToPNG/b:token) = 32</tns:expression>
+              <tns:description>Invalid token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -12402,12 +12769,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:exportToken) = 32</tns:expression>
-              <tns:description>Invalid export token</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:getExportData/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:exportToken) = 32</tns:expression>
+              <tns:description>Invalid export token</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -12427,16 +12794,16 @@
               <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(//b:password) &lt; 256</tns:expression>
-              <tns:description>Password length must shorter than 256 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:password) &gt; 7</tns:expression>
               <tns:description>Password must be atleast 8 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:password) &lt; 256</tns:expression>
+              <tns:description>Password length must shorter than 256 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -12452,12 +12819,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:extractSalesforceData/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -12473,12 +12840,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:extractConnectorData/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -12494,12 +12861,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:extractCloudConnectorData/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -12515,20 +12882,20 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:configfile) &gt; 11</tns:expression>
-              <tns:description>Configuration file name length must be 12 or more characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:configfile) &lt; 256</tns:expression>
-              <tns:description>Configuration file name length must shorter than 256 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:getSpaceJNLPFile/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
               <tns:description>Space ID must be 36 characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:configfile) &gt; 11</tns:expression>
+              <tns:description>Configuration file name length must be 12 or more characters</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:configfile) &lt; 256</tns:expression>
+              <tns:description>Configuration file name length must shorter than 256 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -12544,12 +12911,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:getSpaceStatistics/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -12673,8 +13040,8 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:userName) &lt; 256</tns:expression>
-              <tns:description>username must be shorter than 256 characters</tns:description>
+              <tns:expression>string-length(//b:password) &gt; 0</tns:expression>
+              <tns:description>password length must be 1 or more characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(//b:password) &lt; 256</tns:expression>
@@ -12689,8 +13056,8 @@
               <tns:description>username must be longer than 3 characters</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(//b:password) &gt; 0</tns:expression>
-              <tns:description>password length must be 1 or more characters</tns:description>
+              <tns:expression>string-length(//b:userName) &lt; 256</tns:expression>
+              <tns:description>username must be shorter than 256 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -12727,20 +13094,20 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
+              <tns:expression>string-length(//b:newDashName) &lt;= 64</tns:expression>
+              <tns:description>new dashboard name length must be shorter than 64 characters</tns:description>
             </tns:assert>
             <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:renameDashboard/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(//b:newDashName) &gt; 0</tns:expression>
-              <tns:description>new dashboard name length must be 1 or more characters</tns:description>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
             <tns:assert>
-              <tns:expression>string-length(//b:newDashName) &lt;= 64</tns:expression>
-              <tns:description>new dashboard name length must be shorter than 64 characters</tns:description>
+              <tns:expression>string-length(//b:newDashName) &gt; 0</tns:expression>
+              <tns:description>new dashboard name length must be 1 or more characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -12785,12 +13152,12 @@
         <tns:validation>
           <tns:assertions>
             <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:enableSourceInSpace/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
+            </tns:assert>
+            <tns:assert>
+              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
+              <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>
@@ -12842,85 +13209,6 @@
             <tns:assert>
               <tns:expression>string-length(/s:Envelope/s:Body/b:setLanguageForUser/b:token) = 32</tns:expression>
               <tns:description>Invalid token</tns:description>
-            </tns:assert>
-          </tns:assertions>
-        </tns:validation>
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="setSpaceName">
-      <soap12:operation soapAction="http://www.birst.com/setSpaceName" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-        <tns:validation>
-          <tns:assertions>
-            <tns:assert>
-              <tns:expression>string-length(//b:spaceName) &lt; 256</tns:expression>
-              <tns:description>Space names must be less than 256 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:setSpaceName/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:spaceName) &gt; 0</tns:expression>
-              <tns:description>Space name is required</tns:description>
-            </tns:assert>
-          </tns:assertions>
-        </tns:validation>
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="setSpaceComments">
-      <soap12:operation soapAction="http://www.birst.com/setSpaceComments" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-        <tns:validation>
-          <tns:assertions>
-            <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:spaceComments) &lt; 2048</tns:expression>
-              <tns:description>Space names must be less than 256 characters</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:setSpaceComments/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-          </tns:assertions>
-        </tns:validation>
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="setEmailFromForSpace">
-      <soap12:operation soapAction="http://www.birst.com/setEmailFromForSpace" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-        <tns:validation>
-          <tns:assertions>
-            <tns:assert>
-              <tns:expression>string-length(/s:Envelope/s:Body/b:setEmailFromForSpace/b:token) = 32</tns:expression>
-              <tns:description>Invalid token</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:email) &gt; 0</tns:expression>
-              <tns:description>Email is required</tns:description>
-            </tns:assert>
-            <tns:assert>
-              <tns:expression>string-length(//b:spaceID) = 36</tns:expression>
-              <tns:description>Space ID must be 36 characters</tns:description>
             </tns:assert>
           </tns:assertions>
         </tns:validation>

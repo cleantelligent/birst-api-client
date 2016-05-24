@@ -27,6 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="dateFormat" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="compressionFormat" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="ignoreHeaders" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="keepQuotes" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -47,7 +48,8 @@ import javax.xml.bind.annotation.XmlType;
     "encryptionKey",
     "dateFormat",
     "compressionFormat",
-    "ignoreHeaders"
+    "ignoreHeaders",
+    "keepQuotes"
 })
 public class RedshiftStagingDetails {
 
@@ -62,6 +64,7 @@ public class RedshiftStagingDetails {
     protected String dateFormat;
     protected String compressionFormat;
     protected int ignoreHeaders;
+    protected boolean keepQuotes;
 
     /**
      * Gets the value of the stagingTableName property.
@@ -317,6 +320,22 @@ public class RedshiftStagingDetails {
      */
     public void setIgnoreHeaders(int value) {
         this.ignoreHeaders = value;
+    }
+
+    /**
+     * Gets the value of the keepQuotes property.
+     * 
+     */
+    public boolean isKeepQuotes() {
+        return keepQuotes;
+    }
+
+    /**
+     * Sets the value of the keepQuotes property.
+     * 
+     */
+    public void setKeepQuotes(boolean value) {
+        this.keepQuotes = value;
     }
 
 }
