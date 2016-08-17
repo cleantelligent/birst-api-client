@@ -19,7 +19,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "CommandWebService", targetNamespace = "http://www.birst.com/", wsdlLocation = "https://login.bws.birst.com/CommandWebService.asmx?WSDL")
+@WebServiceClient(name = "CommandWebService", targetNamespace = "http://www.birst.com/", wsdlLocation = "file:/Users/tamassimon/code/intouch/birst-api-client/src/main/resources/CommandWebService.wsdl")
 public class CommandWebService
     extends Service
 {
@@ -32,7 +32,7 @@ public class CommandWebService
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("https://login.bws.birst.com/CommandWebService.asmx?WSDL");
+            url = new URL("file:/Users/tamassimon/code/intouch/birst-api-client/src/main/resources/CommandWebService.wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

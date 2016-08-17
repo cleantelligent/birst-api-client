@@ -3,6 +3,7 @@ package birst.command.webservice.generated;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
@@ -22,6 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="displayNames" type="{http://www.birst.com/}ArrayOfString" minOccurs="0"/>
  *         &lt;element name="dataTypes" type="{http://www.birst.com/}ArrayOfInt" minOccurs="0"/>
  *         &lt;element name="errorMessage" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="errorCode" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,7 +38,8 @@ import javax.xml.bind.annotation.XmlType;
     "columnNames",
     "displayNames",
     "dataTypes",
-    "errorMessage"
+    "errorMessage",
+    "errorCode"
 })
 @XmlSeeAlso({
     CommandQueryResult.class
@@ -48,6 +51,8 @@ public class QueryResult {
     protected ArrayOfString displayNames;
     protected ArrayOfInt dataTypes;
     protected String errorMessage;
+    @XmlElement(defaultValue = "0")
+    protected Integer errorCode;
 
     /**
      * Gets the value of the rows property.
@@ -167,6 +172,30 @@ public class QueryResult {
      */
     public void setErrorMessage(String value) {
         this.errorMessage = value;
+    }
+
+    /**
+     * Gets the value of the errorCode property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getErrorCode() {
+        return errorCode;
+    }
+
+    /**
+     * Sets the value of the errorCode property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setErrorCode(Integer value) {
+        this.errorCode = value;
     }
 
 }

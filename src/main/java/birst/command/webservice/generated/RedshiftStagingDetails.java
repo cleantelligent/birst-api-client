@@ -28,6 +28,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="compressionFormat" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="ignoreHeaders" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="keepQuotes" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+ *         &lt;element name="skipEscape" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -49,7 +50,8 @@ import javax.xml.bind.annotation.XmlType;
     "dateFormat",
     "compressionFormat",
     "ignoreHeaders",
-    "keepQuotes"
+    "keepQuotes",
+    "skipEscape"
 })
 public class RedshiftStagingDetails {
 
@@ -65,6 +67,7 @@ public class RedshiftStagingDetails {
     protected String compressionFormat;
     protected int ignoreHeaders;
     protected boolean keepQuotes;
+    protected boolean skipEscape;
 
     /**
      * Gets the value of the stagingTableName property.
@@ -336,6 +339,22 @@ public class RedshiftStagingDetails {
      */
     public void setKeepQuotes(boolean value) {
         this.keepQuotes = value;
+    }
+
+    /**
+     * Gets the value of the skipEscape property.
+     * 
+     */
+    public boolean isSkipEscape() {
+        return skipEscape;
+    }
+
+    /**
+     * Sets the value of the skipEscape property.
+     * 
+     */
+    public void setSkipEscape(boolean value) {
+        this.skipEscape = value;
     }
 
 }

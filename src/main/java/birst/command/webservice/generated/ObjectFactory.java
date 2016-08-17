@@ -86,6 +86,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetODBCMetaDataSubjectAreas }
+     * 
+     */
+    public GetODBCMetaDataSubjectAreas createGetODBCMetaDataSubjectAreas() {
+        return new GetODBCMetaDataSubjectAreas();
+    }
+
+    /**
      * Create an instance of {@link PublishData }
      * 
      */
@@ -1478,6 +1486,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link SetDenyAddSpace }
+     * 
+     */
+    public SetDenyAddSpace createSetDenyAddSpace() {
+        return new SetDenyAddSpace();
+    }
+
+    /**
      * Create an instance of {@link ExecuteScheduledReport }
      * 
      */
@@ -2094,6 +2110,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link SetDenyAddSpaceResponse }
+     * 
+     */
+    public SetDenyAddSpaceResponse createSetDenyAddSpaceResponse() {
+        return new SetDenyAddSpaceResponse();
+    }
+
+    /**
      * Create an instance of {@link GetProfileDetails }
      * 
      */
@@ -2179,6 +2203,14 @@ public class ObjectFactory {
      */
     public AddAllowedIPAddrForAccount createAddAllowedIPAddrForAccount() {
         return new AddAllowedIPAddrForAccount();
+    }
+
+    /**
+     * Create an instance of {@link GetODBCMetaDataSubjectAreasResponse }
+     * 
+     */
+    public GetODBCMetaDataSubjectAreasResponse createGetODBCMetaDataSubjectAreasResponse() {
+        return new GetODBCMetaDataSubjectAreasResponse();
     }
 
     /**

@@ -63,7 +63,7 @@ public interface CommandWebServiceSoap {
         String spaceComments);
 
     /**
-     * Sets the Email.  Argments are the Login token, the space Id, and the email. The email must be in valid format.
+     * Sets the email address for a space.  Argments are the Login token, the space Id, and the email. The email must be in valid format.
      * 
      * @param spaceID
      * @param email
@@ -81,7 +81,7 @@ public interface CommandWebServiceSoap {
         String email);
 
     /**
-     * Sets the email subject.  Argments are the Login token, the space Id, and the subject.
+     * Sets the email subject for a space.  Argments are the Login token, the space Id, and the subject.
      * 
      * @param spaceID
      * @param subject
@@ -225,7 +225,7 @@ public interface CommandWebServiceSoap {
         StagingTableSubClass data);
 
     /**
-     * Adds or Updates Live Access source.
+     * Adds or Updates Live Access source. Arguments are the login token, space Id, and the source meta data.
      * 
      * @param spaceID
      * @param sourceMetadata
@@ -243,7 +243,7 @@ public interface CommandWebServiceSoap {
         LiveAccessSourceMetadata sourceMetadata);
 
     /**
-     * Gets LiveAccess source data.  Argments are the Login token, the space Id and the sourceName
+     * Gets LiveAccess source data.  Argments are the Login token, the space Id, and the sourceName
      * 
      * @param spaceID
      * @param sourceName
@@ -264,7 +264,7 @@ public interface CommandWebServiceSoap {
         String sourceName);
 
     /**
-     * Sets LiveAccess source data. Argments are the Login token, the space Id and the source data
+     * Sets LiveAccess source data. Argments are the Login token, the space Id, and source data
      * 
      * @param spaceID
      * @param data
@@ -282,7 +282,7 @@ public interface CommandWebServiceSoap {
         LiveAccessSourceSubClass data);
 
     /**
-     * Gets LiveAccess column properties. Argments are the Login token, the space Id ,the sourceName and column name
+     * Gets LiveAccess column properties. Argments are the Login token, space Id, sourceName, and column name
      * 
      * @param spaceID
      * @param sourceName
@@ -414,6 +414,24 @@ public interface CommandWebServiceSoap {
     @RequestWrapper(localName = "getODBCMetaData", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.GetODBCMetaData")
     @ResponseWrapper(localName = "getODBCMetaDataResponse", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.GetODBCMetaDataResponse")
     public MetaDataResult getODBCMetaData(
+        @WebParam(name = "token", targetNamespace = "http://www.birst.com/")
+        String token,
+        @WebParam(name = "spaceID", targetNamespace = "http://www.birst.com/")
+        String spaceID);
+
+    /**
+     * Get ODBC driver meta data - by subject area.  Arguments are the Login token and the space Id.
+     * 
+     * @param spaceID
+     * @param token
+     * @return
+     *     returns birst.command.webservice.generated.MetaDataResult
+     */
+    @WebMethod(action = "http://www.birst.com/getODBCMetaDataSubjectAreas")
+    @WebResult(name = "getODBCMetaDataSubjectAreasResult", targetNamespace = "http://www.birst.com/")
+    @RequestWrapper(localName = "getODBCMetaDataSubjectAreas", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.GetODBCMetaDataSubjectAreas")
+    @ResponseWrapper(localName = "getODBCMetaDataSubjectAreasResponse", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.GetODBCMetaDataSubjectAreasResponse")
+    public MetaDataResult getODBCMetaDataSubjectAreas(
         @WebParam(name = "token", targetNamespace = "http://www.birst.com/")
         String token,
         @WebParam(name = "spaceID", targetNamespace = "http://www.birst.com/")
@@ -881,6 +899,24 @@ public interface CommandWebServiceSoap {
         String token);
 
     /**
+     * Set the flag to deny user to create new space
+     * 
+     * @param disable
+     * @param userName
+     * @param token
+     */
+    @WebMethod(action = "http://www.birst.com/setDenyAddSpace")
+    @RequestWrapper(localName = "setDenyAddSpace", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.SetDenyAddSpace")
+    @ResponseWrapper(localName = "setDenyAddSpaceResponse", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.SetDenyAddSpaceResponse")
+    public void setDenyAddSpace(
+        @WebParam(name = "token", targetNamespace = "http://www.birst.com/")
+        String token,
+        @WebParam(name = "userName", targetNamespace = "http://www.birst.com/")
+        String userName,
+        @WebParam(name = "disable", targetNamespace = "http://www.birst.com/")
+        String disable);
+
+    /**
      * Log out of this web service.  Pass the Login token as the argument
      * 
      * @param token
@@ -944,7 +980,7 @@ public interface CommandWebServiceSoap {
         String spaceID);
 
     /**
-     * Swaps 2 spaces.  The arguments are the Login token, and the names of the 2 spaces. Returns a job token
+     * Swaps 2 spaces.  The arguments are the Login token, and the Id's of the 2 spaces. Returns a job token
      * 
      * @param sp1ID
      * @param sp2ID
@@ -1187,7 +1223,7 @@ public interface CommandWebServiceSoap {
         String spaceID);
 
     /**
-     * List group ACLs in a space.  The method will return a list of ACLs that a given group has.  Arguments are the Login token, the name of the group and the space Id.
+     * List group ACLs in a space.  The method will return a list of ACLs associated with the grroup.  Arguments are the Login token, the name of the group and the space Id.
      * 
      * @param spaceID
      * @param groupName
@@ -1292,7 +1328,7 @@ public interface CommandWebServiceSoap {
         String spaceID);
 
     /**
-     * Lists all users in a group for a space. Returns a list of user names.  Arguments are Login token, name of group and space Id.
+     * Lists all users in a group for a space. Arguments are Login token, name of group and space Id.
      * 
      * @param spaceID
      * @param groupName
@@ -1313,7 +1349,7 @@ public interface CommandWebServiceSoap {
         String spaceID);
 
     /**
-     * Lists all groups that a user belongs to within a space. Returns a list of group names.  Arguments are Login token, space Id, user name, include system groups flag.
+     * Lists all groups that a user belongs to within a space. Arguments are Login token, space Id, user name, include system groups flag.
      * 
      * @param spaceID
      * @param includeInternalGroups
@@ -1337,7 +1373,7 @@ public interface CommandWebServiceSoap {
         boolean includeInternalGroups);
 
     /**
-     * List all users who can proxy for a specific user.  Returns a list of proxy user names.  Arguments are the Login token and the name of the user.
+     * List all users who can proxy for a specific user. Arguments are the Login token and the name of the user.
      * 
      * @param userName
      * @param token
@@ -1355,7 +1391,7 @@ public interface CommandWebServiceSoap {
         String userName);
 
     /**
-     * List all OpenIDs for a user.  Returns a list of OpenIDs. Arguments are the Login token and the name of the user.
+     * List all OpenIDs for a user. Arguments are the Login token and the name of the user.
      * 
      * @param userName
      * @param token
@@ -1430,7 +1466,7 @@ public interface CommandWebServiceSoap {
         boolean dashboards);
 
     /**
-     * List all releases.  Returns a list of releases. Argument is the Login token.
+     * List all releases. Argument is the Login token.
      * 
      * @param token
      * @return
@@ -1586,7 +1622,7 @@ public interface CommandWebServiceSoap {
         String proxyUserName);
 
     /**
-     * List all users managed by the logged in user.  Returns a list of user names. Arguments are the Login token.
+     * List all users managed by the logged in user. Arguments are the Login token.
      * 
      * @param token
      * @return
@@ -1601,7 +1637,7 @@ public interface CommandWebServiceSoap {
         String token);
 
     /**
-     * List all users managed by the logged in user.  Returns a list of user names. Arguments are the Login token.
+     * List all users managed by the logged in user. Arguments are the Login token.
      * 
      * @param token
      * @return
@@ -1616,7 +1652,7 @@ public interface CommandWebServiceSoap {
         String token);
 
     /**
-     * List IPs that a user is allowed to log in from.  Returns a list of IP addresses / CIDR netblocks.  Arguments are the Login token and the name of the user.
+     * List IPs/CIDR netblocks that a user is allowed to log in from. Arguments are the Login token and the name of the user.
      * 
      * @param userName
      * @param token
@@ -1670,7 +1706,7 @@ public interface CommandWebServiceSoap {
         String ip);
 
     /**
-     * List IPs that a users in the account is allowed to log in from.  Returns a list of IP addresses / CIDR netblocks.  Argument is the Login token.
+     * List IPs/CIDR netblocks that a users in the account is allowed to log in from. Argument is the Login token.
      * 
      * @param token
      * @return
@@ -1736,7 +1772,7 @@ public interface CommandWebServiceSoap {
         String spaceID);
 
     /**
-     * Creates a new user for the Birst system. Arguments are the Login token, the name of the user and additional parameters. The username must be unique in the Birst system. Additional parameters are a list of name=value pairs separated by spaces. Valid names are 'password=', 'email=', for example 'password=foo email=foo@bar.com'.  If an email address is specified it must be unique. If an email address is not specified, the username is used.
+     * Creates a new user. Arguments are the Login token, the name of the user and additional parameters. The username must be unique in the Birst system. Additional parameters are a list of name=value pairs separated by spaces. Valid names are 'password=', 'email=', for example 'password=foo email=foo@bar.com'.  If an email address is specified it must be unique. If an email address is not specified, the username is used.
      * 
      * @param additionalParams
      * @param userName
@@ -1952,7 +1988,7 @@ public interface CommandWebServiceSoap {
         String query);
 
     /**
-     * Tells Birst that a new source data (.csv file, .xls file) is about to be uploaded.  Arguments are the Login token, the Space ID and the name of the source. Returns a data upload token.
+     * Start a file upload.  Arguments are the Login token, the Space ID and the name of the source. Returns a data upload token.
      * 
      * @param spaceID
      * @param sourceName
@@ -2012,7 +2048,7 @@ public interface CommandWebServiceSoap {
         byte[] data);
 
     /**
-     * Called after the last chunk of data is uploaded for a particular data source.  This informs Birst to start analyzing the data, which could take some time.  This web service will return immediately, but status can be polled with isDataUploadComplete and getDataUploadStatus. Arguments are Login token, and data upload token.
+     * Called after the last chunk of data is uploaded for a particular data source.  This causes the system to start analyzing the data, which could take some time.  This web service will return immediately, but status can be polled with isJobComplete and getJobStatus. Arguments are Login token, and data upload token.
      * 
      * @param dataUploadToken
      * @param token
@@ -2027,7 +2063,7 @@ public interface CommandWebServiceSoap {
         String dataUploadToken);
 
     /**
-     * Called to see if the data that was uploaded has finished processing.  Arguments are the Login token and the data upload token. Returns true if processing is complete and false otherwise.
+     * Deprecated, replaced with isJobComplete. Called to see if the data that was uploaded has finished processing.  Arguments are the Login token and the data upload token. Returns true if processing is complete and false otherwise.
      * 
      * @param dataUploadToken
      * @param token
@@ -2045,7 +2081,7 @@ public interface CommandWebServiceSoap {
         String dataUploadToken);
 
     /**
-     * Called the get the status after data upload processing is complete.  Arguments include the Login token and the data upload token.  Returns an array of statuses, some of which could be warnings and some of which could be errors.
+     * Deprecated, replaced with getJobStatus. Called the get the status after data upload processing is complete.  Arguments include the Login token and the data upload token.  Returns an array of statuses, some of which could be warnings and some of which could be errors.
      * 
      * @param dataUploadToken
      * @param token
@@ -2063,7 +2099,7 @@ public interface CommandWebServiceSoap {
         String dataUploadToken);
 
     /**
-     * Called to see if a job that runs in the background has finished processing.  Arguments are the Login token and the job token. Returns true if processing is complete and false otherwise.
+     * Called to see if an asychonous job has finished processing.  Arguments are the Login token and the job token. Returns true if processing is complete and false otherwise.
      * 
      * @param jobToken
      * @param token
@@ -2081,7 +2117,7 @@ public interface CommandWebServiceSoap {
         String jobToken);
 
     /**
-     * Called the get the status after a background job is complete.  Arguments include the Login token and the job token.  Returns an XML representation of the status.
+     * Get the status of an asynchronous job after it has completed.  Arguments include the Login token and the job token.  Returns an XML representation of the status.
      * 
      * @param jobToken
      * @param token
@@ -2099,7 +2135,7 @@ public interface CommandWebServiceSoap {
         String jobToken);
 
     /**
-     * Gets Birst to process the data sources that have been defined.  Arguments are Login token, space id, subgroups (if defined in the space), and the date to use as the load date.  Returns a publishing token.
+     * Start the processing of uploaded data sources. Arguments are Login token, space id, subgroups (if defined in the space), and the date to use as the load date.  Returns a publishing token.  Call getJobStatus and isJobComplete to check the status.
      * 
      * @param date
      * @param spaceID
@@ -2123,7 +2159,7 @@ public interface CommandWebServiceSoap {
         XMLGregorianCalendar date);
 
     /**
-     * Determines if publishing has completed. Arguments are Login token and publishing token.  Return true if publishing has completed and false otherwise.
+     * Deprecated, replaced with isJobComplete. Determines if publishing has completed. Arguments are Login token and publishing token.  Return true if publishing has completed and false otherwise.
      * 
      * @param publishingToken
      * @param token
@@ -2141,7 +2177,7 @@ public interface CommandWebServiceSoap {
         String publishingToken);
 
     /**
-     * Called the get the status after publishing processing is complete.  Arguments include the Login token and the publishing token.  Returns an array of statuses, some of which could be warnings and some of which could be errors.
+     * Deprecated, replaced with getJobStatus. Called the get the status after publishing processing is complete.  Arguments include the Login token and the publishing token.  Returns an array of statuses, some of which could be warnings and some of which could be errors.
      * 
      * @param publishingToken
      * @param token
@@ -2159,7 +2195,7 @@ public interface CommandWebServiceSoap {
         String publishingToken);
 
     /**
-     * Get a list of variables and values defined for a space.  Arguments are Login token and space id.  Returns an array of arrays, each of which is a name value pair
+     * List of variables and values defined for a space.  Arguments are Login token and space id.  Returns an array of arrays, each of which is a name value pair
      * 
      * @param spaceID
      * @param token
@@ -2177,7 +2213,7 @@ public interface CommandWebServiceSoap {
         String spaceID);
 
     /**
-     * Gets the files and directories in a directory for a space.  Arguments are Login token, space id and directory (null value means top level).  Returns an XML representation of the contents of the directory.
+     * List the files and directories in a directory for a space.  Arguments are Login token, space id and directory (null value means top level).  Returns an XML representation of the contents of the directory.
      * 
      * @param spaceID
      * @param dir
@@ -2198,7 +2234,7 @@ public interface CommandWebServiceSoap {
         String dir);
 
     /**
-     * Gets the permissions for a particular directory.  Arguments are Login token, space Id and directory (a null value means top level).  Returns an XML representation of the directory permissions.
+     * List the permissions for a particular directory.  Arguments are Login token, space Id and directory (a null value means top level).  Returns an XML representation of the directory permissions.
      * 
      * @param spaceID
      * @param dir
@@ -2339,7 +2375,7 @@ public interface CommandWebServiceSoap {
         boolean overwrite);
 
     /**
-     * Delete a file or an entire directory.  Arguments are login token, space id and name of file or folder.
+     * Delete a catalog entry or folder.  Arguments are login token, space id and name of the entry or folder.
      * 
      * @param spaceID
      * @param fileOrDir
@@ -2357,7 +2393,7 @@ public interface CommandWebServiceSoap {
         String fileOrDir);
 
     /**
-     * Rename a file or an entire directory.  Arguments are login token, space id, name of file or folder and the new name.
+     * Rename a catalog entry or folder.  Arguments are login token, space id, name of entry or folder and the new name.
      * 
      * @param spaceID
      * @param newName
@@ -2378,7 +2414,7 @@ public interface CommandWebServiceSoap {
         String newName);
 
     /**
-     * Create a new directory.  Arguments are login token, space id, name of parent folder and the new directory name.
+     * Create a new catalog folder. Arguments are login token, space id, name of parent folder and the new folder name.
      * 
      * @param spaceID
      * @param newDirectoryName
@@ -2399,7 +2435,7 @@ public interface CommandWebServiceSoap {
         String newDirectoryName);
 
     /**
-     * Create a new directory. If it already exists, returns false else returns true. Arguments are login token, space id, name of parent folder and the new directory name.
+     * Create a new folder. If it already exists, returns false else returns true. Arguments are login token, space id, name of parent folder and the new folder name.
      * 
      * @param spaceID
      * @param newDirectoryName
@@ -2531,7 +2567,7 @@ public interface CommandWebServiceSoap {
         String toSpaceId);
 
     /**
-     * List all custom subject areas in a space.  Arguments are the login token and the space id.
+     * List all subject areas in a space.  Arguments are the login token and the space id.
      * 
      * @param spaceID
      * @param token
@@ -2549,7 +2585,7 @@ public interface CommandWebServiceSoap {
         String spaceID);
 
     /**
-     * List all subject areas in a space.  Arguments are the login token, space id, and subject area name.
+     * Get a custom subject area.  Arguments are the login token, space id, and subject area name.
      * 
      * @param spaceID
      * @param name
@@ -3083,7 +3119,7 @@ public interface CommandWebServiceSoap {
         String password);
 
     /**
-     * Gets Birst to extract the data sources from salesforce.  Arguments are Login token, and the space id. Returns an extraction token.
+     * Deprecated, replaced with extractCloudConnectorData. Gets Birst to extract the data sources from salesforce.  Arguments are Login token, and the space id. Returns an extraction token. Use getJobStatus and isJobComplete to check the status.
      * 
      * @param spaceID
      * @param token
@@ -3101,7 +3137,7 @@ public interface CommandWebServiceSoap {
         String spaceID);
 
     /**
-     * Gets Birst to extract the data sources from any avaible Connector.  Arguments are Login token, and the space id,Connector Name,Extract Group list and Returns an extraction token.
+     * Deprecated, replaced with extractCloudConnectorData. Gets Birst to extract the data sources from any available Connector.  Arguments are Login token, space id, Connector Name, Extract Group list and returns an extraction token. Use getJobStatus and isJobComplete to check the status.
      * 
      * @param spaceID
      * @param extractGroups
@@ -3125,7 +3161,7 @@ public interface CommandWebServiceSoap {
         ArrayOfString extractGroups);
 
     /**
-     * Gets Birst to extract the data sources from any avaible Connection.  Arguments are Login token, and the space id,Connector Name, Connection Name,Extract Group list and Returns an extraction token.
+     * Gets Birst to extract the data sources from any available Connection.  Arguments are Login token, space id, Connector Name, Connection Name, Extract Group list and returns an extraction token. Use getJobStatus and isJobComplete to check the status.
      * 
      * @param spaceID
      * @param token
@@ -3452,7 +3488,7 @@ public interface CommandWebServiceSoap {
         boolean enabled);
 
     /**
-     * Returns a list of Languages in the sytem.  Arguments are the Login token
+     * Returns a list of locales in the sytem.  Arguments are the Login token
      * 
      * @param token
      * @return
@@ -3467,7 +3503,7 @@ public interface CommandWebServiceSoap {
         String token);
 
     /**
-     * Returns the language a specific user is set to. Arguments are the Login token, and the user name
+     * Returns the locale for a user. Arguments are the Login token, and the user name
      * 
      * @param token
      * @param username
@@ -3485,7 +3521,7 @@ public interface CommandWebServiceSoap {
         String username);
 
     /**
-     * Sets the language for a specific user. Arguments are the Login token, the user name and the language id.
+     * Sets the locale for a user. Arguments are the Login token, the user name and the language id.
      * 
      * @param localeId
      * @param token
