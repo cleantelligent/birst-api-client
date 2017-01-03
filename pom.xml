@@ -10,7 +10,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <jaxws.version>2.2.10</jaxws.version>
-        <birst.command.webservices.version>5.24</birst.command.webservices.version>
+        <birst.command.webservices.version>5.25</birst.command.webservices.version>
     </properties>
 
     <groupId>com.birst</groupId>

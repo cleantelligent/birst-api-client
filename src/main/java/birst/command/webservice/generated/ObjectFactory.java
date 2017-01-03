@@ -318,6 +318,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link AddEmailDomainsResponse }
+     * 
+     */
+    public AddEmailDomainsResponse createAddEmailDomainsResponse() {
+        return new AddEmailDomainsResponse();
+    }
+
+    /**
      * Create an instance of {@link ExecuteQueryInSpace }
      * 
      */
@@ -414,6 +422,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ListLanguagesResponse }
+     * 
+     */
+    public ListLanguagesResponse createListLanguagesResponse() {
+        return new ListLanguagesResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfLanguage }
+     * 
+     */
+    public ArrayOfLanguage createArrayOfLanguage() {
+        return new ArrayOfLanguage();
+    }
+
+    /**
      * Create an instance of {@link UploadImageToReportCatalogResponse }
      * 
      */
@@ -435,22 +459,6 @@ public class ObjectFactory {
      */
     public SetDirectoryPermissionResponse createSetDirectoryPermissionResponse() {
         return new SetDirectoryPermissionResponse();
-    }
-
-    /**
-     * Create an instance of {@link ListLanguagesResponse }
-     * 
-     */
-    public ListLanguagesResponse createListLanguagesResponse() {
-        return new ListLanguagesResponse();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfLanguage }
-     * 
-     */
-    public ArrayOfLanguage createArrayOfLanguage() {
-        return new ArrayOfLanguage();
     }
 
     /**
@@ -547,6 +555,22 @@ public class ObjectFactory {
      */
     public SetLogoForSpaceResponse createSetLogoForSpaceResponse() {
         return new SetLogoForSpaceResponse();
+    }
+
+    /**
+     * Create an instance of {@link ListEmailDomainsResponse }
+     * 
+     */
+    public ListEmailDomainsResponse createListEmailDomainsResponse() {
+        return new ListEmailDomainsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfEmailDomain }
+     * 
+     */
+    public ArrayOfEmailDomain createArrayOfEmailDomain() {
+        return new ArrayOfEmailDomain();
     }
 
     /**
@@ -678,6 +702,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetLanguageForUserResponse }
+     * 
+     */
+    public GetLanguageForUserResponse createGetLanguageForUserResponse() {
+        return new GetLanguageForUserResponse();
+    }
+
+    /**
      * Create an instance of {@link GetUserRelease }
      * 
      */
@@ -691,14 +723,6 @@ public class ObjectFactory {
      */
     public DeleteAllDataFromSpaceResponse createDeleteAllDataFromSpaceResponse() {
         return new DeleteAllDataFromSpaceResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetLanguageForUserResponse }
-     * 
-     */
-    public GetLanguageForUserResponse createGetLanguageForUserResponse() {
-        return new GetLanguageForUserResponse();
     }
 
     /**
@@ -1158,11 +1182,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SetDashboardView }
+     * Create an instance of {@link RemoveEmailDomains }
      * 
      */
-    public SetDashboardView createSetDashboardView() {
-        return new SetDashboardView();
+    public RemoveEmailDomains createRemoveEmailDomains() {
+        return new RemoveEmailDomains();
     }
 
     /**
@@ -1171,6 +1195,14 @@ public class ObjectFactory {
      */
     public EnableSourceInSpaceResponse createEnableSourceInSpaceResponse() {
         return new EnableSourceInSpaceResponse();
+    }
+
+    /**
+     * Create an instance of {@link SetDashboardView }
+     * 
+     */
+    public SetDashboardView createSetDashboardView() {
+        return new SetDashboardView();
     }
 
     /**
@@ -1374,11 +1406,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ReplaceExpressionInReport }
+     * 
+     */
+    public ReplaceExpressionInReport createReplaceExpressionInReport() {
+        return new ReplaceExpressionInReport();
+    }
+
+    /**
      * Create an instance of {@link GetProfileResponse }
      * 
      */
     public GetProfileResponse createGetProfileResponse() {
         return new GetProfileResponse();
+    }
+
+    /**
+     * Create an instance of {@link CreateDashboardCollectionResponse }
+     * 
+     */
+    public CreateDashboardCollectionResponse createCreateDashboardCollectionResponse() {
+        return new CreateDashboardCollectionResponse();
     }
 
     /**
@@ -1542,11 +1590,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetAvailableACLsResponse }
+     * 
+     */
+    public GetAvailableACLsResponse createGetAvailableACLsResponse() {
+        return new GetAvailableACLsResponse();
+    }
+
+    /**
      * Create an instance of {@link SetEmailSubjectForSpace }
      * 
      */
     public SetEmailSubjectForSpace createSetEmailSubjectForSpace() {
         return new SetEmailSubjectForSpace();
+    }
+
+    /**
+     * Create an instance of {@link ListEmailDomains }
+     * 
+     */
+    public ListEmailDomains createListEmailDomains() {
+        return new ListEmailDomains();
     }
 
     /**
@@ -1838,6 +1902,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ExecuteQueryInSpaceWithOptionsResponse }
+     * 
+     */
+    public ExecuteQueryInSpaceWithOptionsResponse createExecuteQueryInSpaceWithOptionsResponse() {
+        return new ExecuteQueryInSpaceWithOptionsResponse();
+    }
+
+    /**
      * Create an instance of {@link ListGroupAclsInSpace }
      * 
      */
@@ -1918,6 +1990,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link RemoveEmailDomainsResponse }
+     * 
+     */
+    public RemoveEmailDomainsResponse createRemoveEmailDomainsResponse() {
+        return new RemoveEmailDomainsResponse();
+    }
+
+    /**
      * Create an instance of {@link CreateExpressionResponse }
      * 
      */
@@ -1931,6 +2011,14 @@ public class ObjectFactory {
      */
     public ExportReportToXLS createExportReportToXLS() {
         return new ExportReportToXLS();
+    }
+
+    /**
+     * Create an instance of {@link GetAvailableACLs }
+     * 
+     */
+    public GetAvailableACLs createGetAvailableACLs() {
+        return new GetAvailableACLs();
     }
 
     /**
@@ -2155,6 +2243,14 @@ public class ObjectFactory {
      */
     public UpdateProfileResponse createUpdateProfileResponse() {
         return new UpdateProfileResponse();
+    }
+
+    /**
+     * Create an instance of {@link ReplaceExpressionInReportResponse }
+     * 
+     */
+    public ReplaceExpressionInReportResponse createReplaceExpressionInReportResponse() {
+        return new ReplaceExpressionInReportResponse();
     }
 
     /**
@@ -2438,6 +2534,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CreateDashboardCollection }
+     * 
+     */
+    public CreateDashboardCollection createCreateDashboardCollection() {
+        return new CreateDashboardCollection();
+    }
+
+    /**
      * Create an instance of {@link RenameSubjectAreaResponse }
      * 
      */
@@ -2683,6 +2787,22 @@ public class ObjectFactory {
      */
     public SetLiveAccessColumnPropertiesResponse createSetLiveAccessColumnPropertiesResponse() {
         return new SetLiveAccessColumnPropertiesResponse();
+    }
+
+    /**
+     * Create an instance of {@link ExecuteQueryInSpaceWithOptions }
+     * 
+     */
+    public ExecuteQueryInSpaceWithOptions createExecuteQueryInSpaceWithOptions() {
+        return new ExecuteQueryInSpaceWithOptions();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfQueryOptionOfStringString }
+     * 
+     */
+    public ArrayOfQueryOptionOfStringString createArrayOfQueryOptionOfStringString() {
+        return new ArrayOfQueryOptionOfStringString();
     }
 
     /**
@@ -2974,6 +3094,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link AddEmailDomains }
+     * 
+     */
+    public AddEmailDomains createAddEmailDomains() {
+        return new AddEmailDomains();
+    }
+
+    /**
      * Create an instance of {@link SetSpaceNameResponse }
      * 
      */
@@ -3094,14 +3222,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ScriptDefinition }
-     * 
-     */
-    public ScriptDefinition createScriptDefinition() {
-        return new ScriptDefinition();
-    }
-
-    /**
      * Create an instance of {@link ArrayOfODBCColumnResult }
      * 
      */
@@ -3118,11 +3238,67 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ODBCColumnResult }
+     * 
+     */
+    public ODBCColumnResult createODBCColumnResult() {
+        return new ODBCColumnResult();
+    }
+
+    /**
+     * Create an instance of {@link ODBCTableResult }
+     * 
+     */
+    public ODBCTableResult createODBCTableResult() {
+        return new ODBCTableResult();
+    }
+
+    /**
+     * Create an instance of {@link GroupPermission }
+     * 
+     */
+    public GroupPermission createGroupPermission() {
+        return new GroupPermission();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfString1 }
+     * 
+     */
+    public ArrayOfString1 createArrayOfString1() {
+        return new ArrayOfString1();
+    }
+
+    /**
+     * Create an instance of {@link CloudConnection }
+     * 
+     */
+    public CloudConnection createCloudConnection() {
+        return new CloudConnection();
+    }
+
+    /**
+     * Create an instance of {@link ScriptDefinition }
+     * 
+     */
+    public ScriptDefinition createScriptDefinition() {
+        return new ScriptDefinition();
+    }
+
+    /**
      * Create an instance of {@link ArrayOfODBCTableResult }
      * 
      */
     public ArrayOfODBCTableResult createArrayOfODBCTableResult() {
         return new ArrayOfODBCTableResult();
+    }
+
+    /**
+     * Create an instance of {@link EmailDomain }
+     * 
+     */
+    public EmailDomain createEmailDomain() {
+        return new EmailDomain();
     }
 
     /**
@@ -3166,27 +3342,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ODBCColumnResult }
+     * Create an instance of {@link QueryOptionOfStringString }
      * 
      */
-    public ODBCColumnResult createODBCColumnResult() {
-        return new ODBCColumnResult();
-    }
-
-    /**
-     * Create an instance of {@link ODBCTableResult }
-     * 
-     */
-    public ODBCTableResult createODBCTableResult() {
-        return new ODBCTableResult();
-    }
-
-    /**
-     * Create an instance of {@link GroupPermission }
-     * 
-     */
-    public GroupPermission createGroupPermission() {
-        return new GroupPermission();
+    public QueryOptionOfStringString createQueryOptionOfStringString() {
+        return new QueryOptionOfStringString();
     }
 
     /**
@@ -3203,22 +3363,6 @@ public class ObjectFactory {
      */
     public UserProfileMapping createUserProfileMapping() {
         return new UserProfileMapping();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfString1 }
-     * 
-     */
-    public ArrayOfString1 createArrayOfString1() {
-        return new ArrayOfString1();
-    }
-
-    /**
-     * Create an instance of {@link CloudConnection }
-     * 
-     */
-    public CloudConnection createCloudConnection() {
-        return new CloudConnection();
     }
 
     /**

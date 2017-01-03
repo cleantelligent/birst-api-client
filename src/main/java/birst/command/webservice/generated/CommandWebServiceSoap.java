@@ -27,6 +27,78 @@ public interface CommandWebServiceSoap {
 
 
     /**
+     * Enables/disables a data source.  Arguments are the Login token, the space id, the name of the data source, and an enabled flag.
+     * 
+     * @param spaceID
+     * @param dataSourceName
+     * @param enabled
+     * @param token
+     */
+    @WebMethod(action = "http://www.birst.com/enableSourceInSpace")
+    @RequestWrapper(localName = "enableSourceInSpace", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.EnableSourceInSpace")
+    @ResponseWrapper(localName = "enableSourceInSpaceResponse", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.EnableSourceInSpaceResponse")
+    public void enableSourceInSpace(
+        @WebParam(name = "token", targetNamespace = "http://www.birst.com/")
+        String token,
+        @WebParam(name = "spaceID", targetNamespace = "http://www.birst.com/")
+        String spaceID,
+        @WebParam(name = "dataSourceName", targetNamespace = "http://www.birst.com/")
+        String dataSourceName,
+        @WebParam(name = "enabled", targetNamespace = "http://www.birst.com/")
+        boolean enabled);
+
+    /**
+     * Returns a list of locales in the sytem.  Arguments are the Login token
+     * 
+     * @param token
+     * @return
+     *     returns birst.command.webservice.generated.ArrayOfLanguage
+     */
+    @WebMethod(action = "http://www.birst.com/listLanguages")
+    @WebResult(name = "listLanguagesResult", targetNamespace = "http://www.birst.com/")
+    @RequestWrapper(localName = "listLanguages", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.ListLanguages")
+    @ResponseWrapper(localName = "listLanguagesResponse", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.ListLanguagesResponse")
+    public ArrayOfLanguage listLanguages(
+        @WebParam(name = "token", targetNamespace = "http://www.birst.com/")
+        String token);
+
+    /**
+     * Returns the locale for a user. Arguments are the Login token, and the user name
+     * 
+     * @param token
+     * @param username
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(action = "http://www.birst.com/getLanguageForUser")
+    @WebResult(name = "getLanguageForUserResult", targetNamespace = "http://www.birst.com/")
+    @RequestWrapper(localName = "getLanguageForUser", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.GetLanguageForUser")
+    @ResponseWrapper(localName = "getLanguageForUserResponse", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.GetLanguageForUserResponse")
+    public String getLanguageForUser(
+        @WebParam(name = "token", targetNamespace = "http://www.birst.com/")
+        String token,
+        @WebParam(name = "username", targetNamespace = "http://www.birst.com/")
+        String username);
+
+    /**
+     * Sets the locale for a user. Arguments are the Login token, the user name and the language id.
+     * 
+     * @param localeId
+     * @param token
+     * @param username
+     */
+    @WebMethod(action = "http://www.birst.com/setLanguageForUser")
+    @RequestWrapper(localName = "setLanguageForUser", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.SetLanguageForUser")
+    @ResponseWrapper(localName = "setLanguageForUserResponse", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.SetLanguageForUserResponse")
+    public void setLanguageForUser(
+        @WebParam(name = "token", targetNamespace = "http://www.birst.com/")
+        String token,
+        @WebParam(name = "username", targetNamespace = "http://www.birst.com/")
+        String username,
+        @WebParam(name = "localeId", targetNamespace = "http://www.birst.com/")
+        String localeId);
+
+    /**
      * Sets the space name. Argments are the Login token, the space Id, and the spaceName. The spaceName must be less than 256 characters and required.
      * 
      * @param spaceName
@@ -917,6 +989,48 @@ public interface CommandWebServiceSoap {
         String disable);
 
     /**
+     * add email domains
+     * 
+     * @param domainList
+     * @param token
+     */
+    @WebMethod(action = "http://www.birst.com/addEmailDomains")
+    @RequestWrapper(localName = "addEmailDomains", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.AddEmailDomains")
+    @ResponseWrapper(localName = "addEmailDomainsResponse", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.AddEmailDomainsResponse")
+    public void addEmailDomains(
+        @WebParam(name = "token", targetNamespace = "http://www.birst.com/")
+        String token,
+        @WebParam(name = "domainList", targetNamespace = "http://www.birst.com/")
+        ArrayOfString domainList);
+
+    /**
+     * List email domains
+     * 
+     * @param token
+     * @return
+     *     returns birst.command.webservice.generated.ArrayOfEmailDomain
+     */
+    @WebMethod(action = "http://www.birst.com/listEmailDomains")
+    @WebResult(name = "listEmailDomainsResult", targetNamespace = "http://www.birst.com/")
+    @RequestWrapper(localName = "listEmailDomains", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.ListEmailDomains")
+    @ResponseWrapper(localName = "listEmailDomainsResponse", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.ListEmailDomainsResponse")
+    public ArrayOfEmailDomain listEmailDomains(
+        @WebParam(name = "token", targetNamespace = "http://www.birst.com/")
+        String token);
+
+    /**
+     * Remove email domains
+     * 
+     * @param token
+     */
+    @WebMethod(action = "http://www.birst.com/removeEmailDomains")
+    @RequestWrapper(localName = "removeEmailDomains", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.RemoveEmailDomains")
+    @ResponseWrapper(localName = "removeEmailDomainsResponse", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.RemoveEmailDomainsResponse")
+    public void removeEmailDomains(
+        @WebParam(name = "token", targetNamespace = "http://www.birst.com/")
+        String token);
+
+    /**
      * Log out of this web service.  Pass the Login token as the argument
      * 
      * @param token
@@ -1221,6 +1335,21 @@ public interface CommandWebServiceSoap {
         String token,
         @WebParam(name = "spaceID", targetNamespace = "http://www.birst.com/")
         String spaceID);
+
+    /**
+     * List all the available ACLs for the logged in account admin.  The method will return a list of ACLs associated with the account.  Arguments are the Login token.
+     * 
+     * @param token
+     * @return
+     *     returns birst.command.webservice.generated.ArrayOfString
+     */
+    @WebMethod(action = "http://www.birst.com/getAvailableACLs")
+    @WebResult(name = "getAvailableACLsResult", targetNamespace = "http://www.birst.com/")
+    @RequestWrapper(localName = "getAvailableACLs", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.GetAvailableACLs")
+    @ResponseWrapper(localName = "getAvailableACLsResponse", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.GetAvailableACLsResponse")
+    public ArrayOfString getAvailableACLs(
+        @WebParam(name = "token", targetNamespace = "http://www.birst.com/")
+        String token);
 
     /**
      * List group ACLs in a space.  The method will return a list of ACLs associated with the grroup.  Arguments are the Login token, the name of the group and the space Id.
@@ -1847,6 +1976,30 @@ public interface CommandWebServiceSoap {
         String spaceID);
 
     /**
+     * Execute a Birst Logical Query.  Arguments are the Login token, the Birst logical query, the space Id and the query options. Query options contains the 'batchSize', which is 1000 by default. Returns the first few results as specified in 'batchSize'. See queryMore for retrieving the remainder.
+     * 
+     * @param spaceID
+     * @param queryOptions
+     * @param query
+     * @param token
+     * @return
+     *     returns birst.command.webservice.generated.CommandQueryResult
+     */
+    @WebMethod(action = "http://www.birst.com/executeQueryInSpaceWithOptions")
+    @WebResult(name = "executeQueryInSpaceWithOptionsResult", targetNamespace = "http://www.birst.com/")
+    @RequestWrapper(localName = "executeQueryInSpaceWithOptions", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.ExecuteQueryInSpaceWithOptions")
+    @ResponseWrapper(localName = "executeQueryInSpaceWithOptionsResponse", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.ExecuteQueryInSpaceWithOptionsResponse")
+    public CommandQueryResult executeQueryInSpaceWithOptions(
+        @WebParam(name = "token", targetNamespace = "http://www.birst.com/")
+        String token,
+        @WebParam(name = "query", targetNamespace = "http://www.birst.com/")
+        String query,
+        @WebParam(name = "spaceID", targetNamespace = "http://www.birst.com/")
+        String spaceID,
+        @WebParam(name = "queryOptions", targetNamespace = "http://www.birst.com/")
+        ArrayOfQueryOptionOfStringString queryOptions);
+
+    /**
      * Gets the data from a report.  Arguments are the Login token, the report name, and the space Id. Returns the first 1000 results.  See queryMore for retrieving the remainder.
      * 
      * @param spaceID
@@ -1887,6 +2040,27 @@ public interface CommandWebServiceSoap {
         String token,
         @WebParam(name = "queryToken", targetNamespace = "http://www.birst.com/")
         String queryToken);
+
+    /**
+     * Creates an empty dashboard collection. Arguments are the Login token, the space Id, the collection type and the collection name.
+     * 
+     * @param spaceID
+     * @param collectionType
+     * @param token
+     * @param collectionName
+     */
+    @WebMethod(action = "http://www.birst.com/createDashboardCollection")
+    @RequestWrapper(localName = "createDashboardCollection", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.CreateDashboardCollection")
+    @ResponseWrapper(localName = "createDashboardCollectionResponse", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.CreateDashboardCollectionResponse")
+    public void createDashboardCollection(
+        @WebParam(name = "token", targetNamespace = "http://www.birst.com/")
+        String token,
+        @WebParam(name = "spaceID", targetNamespace = "http://www.birst.com/")
+        String spaceID,
+        @WebParam(name = "collectionType", targetNamespace = "http://www.birst.com/")
+        String collectionType,
+        @WebParam(name = "collectionName", targetNamespace = "http://www.birst.com/")
+        String collectionName);
 
     /**
      * Creates an expression.  Arguments are the Login token, the space Id and the Expression to create.
@@ -1986,6 +2160,33 @@ public interface CommandWebServiceSoap {
         String reportName,
         @WebParam(name = "query", targetNamespace = "http://www.birst.com/")
         String query);
+
+    /**
+     * Replaces all occurences of the existing global expression in a report with the new global expression. Arguments are the Login token, the space Id, the report path, the report name, the existing global expression name and the new global expression name .
+     * 
+     * @param spaceID
+     * @param reportName
+     * @param reportPath
+     * @param existingGlobalExpressionName
+     * @param newGlobalExpressionName
+     * @param token
+     */
+    @WebMethod(action = "http://www.birst.com/replaceExpressionInReport")
+    @RequestWrapper(localName = "replaceExpressionInReport", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.ReplaceExpressionInReport")
+    @ResponseWrapper(localName = "replaceExpressionInReportResponse", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.ReplaceExpressionInReportResponse")
+    public void replaceExpressionInReport(
+        @WebParam(name = "token", targetNamespace = "http://www.birst.com/")
+        String token,
+        @WebParam(name = "spaceID", targetNamespace = "http://www.birst.com/")
+        String spaceID,
+        @WebParam(name = "reportPath", targetNamespace = "http://www.birst.com/")
+        String reportPath,
+        @WebParam(name = "reportName", targetNamespace = "http://www.birst.com/")
+        String reportName,
+        @WebParam(name = "existingGlobalExpressionName", targetNamespace = "http://www.birst.com/")
+        String existingGlobalExpressionName,
+        @WebParam(name = "newGlobalExpressionName", targetNamespace = "http://www.birst.com/")
+        String newGlobalExpressionName);
 
     /**
      * Start a file upload.  Arguments are the Login token, the Space ID and the name of the source. Returns a data upload token.
@@ -3465,77 +3666,5 @@ public interface CommandWebServiceSoap {
         String pageName,
         @WebParam(name = "newPageName", targetNamespace = "http://www.birst.com/")
         String newPageName);
-
-    /**
-     * Enables/disables a data source.  Arguments are the Login token, the space id, the name of the data source, and an enabled flag.
-     * 
-     * @param spaceID
-     * @param dataSourceName
-     * @param enabled
-     * @param token
-     */
-    @WebMethod(action = "http://www.birst.com/enableSourceInSpace")
-    @RequestWrapper(localName = "enableSourceInSpace", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.EnableSourceInSpace")
-    @ResponseWrapper(localName = "enableSourceInSpaceResponse", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.EnableSourceInSpaceResponse")
-    public void enableSourceInSpace(
-        @WebParam(name = "token", targetNamespace = "http://www.birst.com/")
-        String token,
-        @WebParam(name = "spaceID", targetNamespace = "http://www.birst.com/")
-        String spaceID,
-        @WebParam(name = "dataSourceName", targetNamespace = "http://www.birst.com/")
-        String dataSourceName,
-        @WebParam(name = "enabled", targetNamespace = "http://www.birst.com/")
-        boolean enabled);
-
-    /**
-     * Returns a list of locales in the sytem.  Arguments are the Login token
-     * 
-     * @param token
-     * @return
-     *     returns birst.command.webservice.generated.ArrayOfLanguage
-     */
-    @WebMethod(action = "http://www.birst.com/listLanguages")
-    @WebResult(name = "listLanguagesResult", targetNamespace = "http://www.birst.com/")
-    @RequestWrapper(localName = "listLanguages", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.ListLanguages")
-    @ResponseWrapper(localName = "listLanguagesResponse", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.ListLanguagesResponse")
-    public ArrayOfLanguage listLanguages(
-        @WebParam(name = "token", targetNamespace = "http://www.birst.com/")
-        String token);
-
-    /**
-     * Returns the locale for a user. Arguments are the Login token, and the user name
-     * 
-     * @param token
-     * @param username
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod(action = "http://www.birst.com/getLanguageForUser")
-    @WebResult(name = "getLanguageForUserResult", targetNamespace = "http://www.birst.com/")
-    @RequestWrapper(localName = "getLanguageForUser", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.GetLanguageForUser")
-    @ResponseWrapper(localName = "getLanguageForUserResponse", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.GetLanguageForUserResponse")
-    public String getLanguageForUser(
-        @WebParam(name = "token", targetNamespace = "http://www.birst.com/")
-        String token,
-        @WebParam(name = "username", targetNamespace = "http://www.birst.com/")
-        String username);
-
-    /**
-     * Sets the locale for a user. Arguments are the Login token, the user name and the language id.
-     * 
-     * @param localeId
-     * @param token
-     * @param username
-     */
-    @WebMethod(action = "http://www.birst.com/setLanguageForUser")
-    @RequestWrapper(localName = "setLanguageForUser", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.SetLanguageForUser")
-    @ResponseWrapper(localName = "setLanguageForUserResponse", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.SetLanguageForUserResponse")
-    public void setLanguageForUser(
-        @WebParam(name = "token", targetNamespace = "http://www.birst.com/")
-        String token,
-        @WebParam(name = "username", targetNamespace = "http://www.birst.com/")
-        String username,
-        @WebParam(name = "localeId", targetNamespace = "http://www.birst.com/")
-        String localeId);
 
 }
