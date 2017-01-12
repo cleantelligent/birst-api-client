@@ -1031,6 +1031,93 @@ public interface CommandWebServiceSoap {
         String token);
 
     /**
+     * Creates a new hierarchy in the space specified
+     * 
+     * @param spaceID
+     * @param hmd
+     * @param token
+     * @return
+     *     returns boolean
+     */
+    @WebMethod(action = "http://www.birst.com/createHierarchy")
+    @WebResult(name = "createHierarchyResult", targetNamespace = "http://www.birst.com/")
+    @RequestWrapper(localName = "createHierarchy", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.CreateHierarchy")
+    @ResponseWrapper(localName = "createHierarchyResponse", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.CreateHierarchyResponse")
+    public boolean createHierarchy(
+        @WebParam(name = "token", targetNamespace = "http://www.birst.com/")
+        String token,
+        @WebParam(name = "spaceID", targetNamespace = "http://www.birst.com/")
+        String spaceID,
+        @WebParam(name = "hmd", targetNamespace = "http://www.birst.com/")
+        HierarchyMetadata hmd);
+
+    /**
+     * Deletes a hierarchy from the space specified
+     * 
+     * @param spaceID
+     * @param hierarchyName
+     * @param token
+     * @return
+     *     returns boolean
+     */
+    @WebMethod(action = "http://www.birst.com/deleteHierarchy")
+    @WebResult(name = "deleteHierarchyResult", targetNamespace = "http://www.birst.com/")
+    @RequestWrapper(localName = "deleteHierarchy", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.DeleteHierarchy")
+    @ResponseWrapper(localName = "deleteHierarchyResponse", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.DeleteHierarchyResponse")
+    public boolean deleteHierarchy(
+        @WebParam(name = "token", targetNamespace = "http://www.birst.com/")
+        String token,
+        @WebParam(name = "spaceID", targetNamespace = "http://www.birst.com/")
+        String spaceID,
+        @WebParam(name = "hierarchyName", targetNamespace = "http://www.birst.com/")
+        String hierarchyName);
+
+    /**
+     * Get hierarchy information from the space specified
+     * 
+     * @param spaceID
+     * @param hierarchyName
+     * @param token
+     * @return
+     *     returns birst.command.webservice.generated.HierarchyMetadata
+     */
+    @WebMethod(action = "http://www.birst.com/getHierarchy")
+    @WebResult(name = "getHierarchyResult", targetNamespace = "http://www.birst.com/")
+    @RequestWrapper(localName = "getHierarchy", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.GetHierarchy")
+    @ResponseWrapper(localName = "getHierarchyResponse", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.GetHierarchyResponse")
+    public HierarchyMetadata getHierarchy(
+        @WebParam(name = "token", targetNamespace = "http://www.birst.com/")
+        String token,
+        @WebParam(name = "spaceID", targetNamespace = "http://www.birst.com/")
+        String spaceID,
+        @WebParam(name = "hierarchyName", targetNamespace = "http://www.birst.com/")
+        String hierarchyName);
+
+    /**
+     * Update hierarchy information for the space specified
+     * 
+     * @param spaceID
+     * @param hierarchyName
+     * @param hmd
+     * @param token
+     * @return
+     *     returns boolean
+     */
+    @WebMethod(action = "http://www.birst.com/updateHierarchy")
+    @WebResult(name = "updateHierarchyResult", targetNamespace = "http://www.birst.com/")
+    @RequestWrapper(localName = "updateHierarchy", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.UpdateHierarchy")
+    @ResponseWrapper(localName = "updateHierarchyResponse", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.UpdateHierarchyResponse")
+    public boolean updateHierarchy(
+        @WebParam(name = "token", targetNamespace = "http://www.birst.com/")
+        String token,
+        @WebParam(name = "spaceID", targetNamespace = "http://www.birst.com/")
+        String spaceID,
+        @WebParam(name = "hierarchyName", targetNamespace = "http://www.birst.com/")
+        String hierarchyName,
+        @WebParam(name = "hmd", targetNamespace = "http://www.birst.com/")
+        HierarchyMetadata hmd);
+
+    /**
      * Log out of this web service.  Pass the Login token as the argument
      * 
      * @param token

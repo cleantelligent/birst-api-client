@@ -238,6 +238,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CreateHierarchy }
+     * 
+     */
+    public CreateHierarchy createCreateHierarchy() {
+        return new CreateHierarchy();
+    }
+
+    /**
+     * Create an instance of {@link HierarchyMetadata }
+     * 
+     */
+    public HierarchyMetadata createHierarchyMetadata() {
+        return new HierarchyMetadata();
+    }
+
+    /**
      * Create an instance of {@link GetProfile }
      * 
      */
@@ -299,6 +315,14 @@ public class ObjectFactory {
      */
     public ArrayOfCloudConnection createArrayOfCloudConnection() {
         return new ArrayOfCloudConnection();
+    }
+
+    /**
+     * Create an instance of {@link UpdateHierarchyResponse }
+     * 
+     */
+    public UpdateHierarchyResponse createUpdateHierarchyResponse() {
+        return new UpdateHierarchyResponse();
     }
 
     /**
@@ -974,6 +998,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DeleteHierarchy }
+     * 
+     */
+    public DeleteHierarchy createDeleteHierarchy() {
+        return new DeleteHierarchy();
+    }
+
+    /**
      * Create an instance of {@link GetDataUploadStatusResponse }
      * 
      */
@@ -995,6 +1027,14 @@ public class ObjectFactory {
      */
     public LiveAccessSourceColumnSubClass createLiveAccessSourceColumnSubClass() {
         return new LiveAccessSourceColumnSubClass();
+    }
+
+    /**
+     * Create an instance of {@link UpdateHierarchy }
+     * 
+     */
+    public UpdateHierarchy createUpdateHierarchy() {
+        return new UpdateHierarchy();
     }
 
     /**
@@ -1299,6 +1339,14 @@ public class ObjectFactory {
      */
     public CopyCustomSubjectAreaResponse createCopyCustomSubjectAreaResponse() {
         return new CopyCustomSubjectAreaResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetHierarchyResponse }
+     * 
+     */
+    public GetHierarchyResponse createGetHierarchyResponse() {
+        return new GetHierarchyResponse();
     }
 
     /**
@@ -1830,6 +1878,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetHierarchy }
+     * 
+     */
+    public GetHierarchy createGetHierarchy() {
+        return new GetHierarchy();
+    }
+
+    /**
      * Create an instance of {@link RemoveUserFromSpaceResponse }
      * 
      */
@@ -1883,6 +1939,14 @@ public class ObjectFactory {
      */
     public GetUserReleaseResponse createGetUserReleaseResponse() {
         return new GetUserReleaseResponse();
+    }
+
+    /**
+     * Create an instance of {@link DeleteHierarchyResponse }
+     * 
+     */
+    public DeleteHierarchyResponse createDeleteHierarchyResponse() {
+        return new DeleteHierarchyResponse();
     }
 
     /**
@@ -3102,6 +3166,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CreateHierarchyResponse }
+     * 
+     */
+    public CreateHierarchyResponse createCreateHierarchyResponse() {
+        return new CreateHierarchyResponse();
+    }
+
+    /**
      * Create an instance of {@link SetSpaceNameResponse }
      * 
      */
@@ -3318,6 +3390,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ArrayOfLevelMetadata }
+     * 
+     */
+    public ArrayOfLevelMetadata createArrayOfLevelMetadata() {
+        return new ArrayOfLevelMetadata();
+    }
+
+    /**
      * Create an instance of {@link SourceColumnSubClass }
      * 
      */
@@ -3347,6 +3427,14 @@ public class ObjectFactory {
      */
     public QueryOptionOfStringString createQueryOptionOfStringString() {
         return new QueryOptionOfStringString();
+    }
+
+    /**
+     * Create an instance of {@link LevelMetadata }
+     * 
+     */
+    public LevelMetadata createLevelMetadata() {
+        return new LevelMetadata();
     }
 
     /**
