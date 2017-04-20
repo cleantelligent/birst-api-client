@@ -918,6 +918,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link IsWdcAvailableResponse }
+     * 
+     */
+    public IsWdcAvailableResponse createIsWdcAvailableResponse() {
+        return new IsWdcAvailableResponse();
+    }
+
+    /**
      * Create an instance of {@link ListProxyUsers }
      * 
      */
@@ -1563,6 +1571,14 @@ public class ObjectFactory {
      */
     public AddProxyUser createAddProxyUser() {
         return new AddProxyUser();
+    }
+
+    /**
+     * Create an instance of {@link GetAllHierarchies }
+     * 
+     */
+    public GetAllHierarchies createGetAllHierarchies() {
+        return new GetAllHierarchies();
     }
 
     /**
@@ -2358,6 +2374,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetAllHierarchiesResponse }
+     * 
+     */
+    public GetAllHierarchiesResponse createGetAllHierarchiesResponse() {
+        return new GetAllHierarchiesResponse();
+    }
+
+    /**
      * Create an instance of {@link AddAllowedIPAddrForAccount }
      * 
      */
@@ -3075,6 +3099,14 @@ public class ObjectFactory {
      */
     public ExportReportToPNGResponse createExportReportToPNGResponse() {
         return new ExportReportToPNGResponse();
+    }
+
+    /**
+     * Create an instance of {@link IsWdcAvailable }
+     * 
+     */
+    public IsWdcAvailable createIsWdcAvailable() {
+        return new IsWdcAvailable();
     }
 
     /**

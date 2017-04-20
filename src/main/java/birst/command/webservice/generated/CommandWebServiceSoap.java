@@ -1118,6 +1118,39 @@ public interface CommandWebServiceSoap {
         HierarchyMetadata hmd);
 
     /**
+     * Get list of hierarchies in the space
+     * 
+     * @param spaceID
+     * @param token
+     * @return
+     *     returns birst.command.webservice.generated.ArrayOfString
+     */
+    @WebMethod(action = "http://www.birst.com/getAllHierarchies")
+    @WebResult(name = "getAllHierarchiesResult", targetNamespace = "http://www.birst.com/")
+    @RequestWrapper(localName = "getAllHierarchies", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.GetAllHierarchies")
+    @ResponseWrapper(localName = "getAllHierarchiesResponse", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.GetAllHierarchiesResponse")
+    public ArrayOfString getAllHierarchies(
+        @WebParam(name = "token", targetNamespace = "http://www.birst.com/")
+        String token,
+        @WebParam(name = "spaceID", targetNamespace = "http://www.birst.com/")
+        String spaceID);
+
+    /**
+     * Returns the response whether current user has access to Web Data Connector
+     * 
+     * @param token
+     * @return
+     *     returns boolean
+     */
+    @WebMethod(action = "http://www.birst.com/isWdcAvailable")
+    @WebResult(name = "isWdcAvailableResult", targetNamespace = "http://www.birst.com/")
+    @RequestWrapper(localName = "isWdcAvailable", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.IsWdcAvailable")
+    @ResponseWrapper(localName = "isWdcAvailableResponse", targetNamespace = "http://www.birst.com/", className = "birst.command.webservice.generated.IsWdcAvailableResponse")
+    public boolean isWdcAvailable(
+        @WebParam(name = "token", targetNamespace = "http://www.birst.com/")
+        String token);
+
+    /**
      * Log out of this web service.  Pass the Login token as the argument
      * 
      * @param token
@@ -3407,7 +3440,7 @@ public interface CommandWebServiceSoap {
         String password);
 
     /**
-     * Deprecated, replaced with extractCloudConnectorData. Gets Birst to extract the data sources from salesforce.  Arguments are Login token, and the space id. Returns an extraction token. Use getJobStatus and isJobComplete to check the status.
+     * The extractSalesforceData web service was deprecated in 5.23 and is now removed. Use extractCloudConnectorData instead.
      * 
      * @param spaceID
      * @param token
